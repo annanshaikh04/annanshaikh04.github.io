@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annanahmed Shaikh — Data Scientist & ML Engineer</title>
+  <meta name="description" content="Portfolio of Annanahmed Shaikh — MS Data Science student at Wentworth Institute of Technology. Specializing in Machine Learning, Deep Learning, NLP, and Data Engineering.">
+  <meta name="author" content="Annanahmed Shaikh">
+  <meta name="keywords" content="data scientist, machine learning, deep learning, NLP, portfolio, Python, AI">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="nav-logo">AS<span>.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Research</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <canvas id="particle-canvas"></canvas>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            Open to Full-Time Opportunities
+          </div>
+          <h1 class="hero-name">
+            Hi, I'm <br>
+            <span class="gradient-text">Annanahmed Shaikh</span>
+          </h1>
+          <p class="hero-tagline">
+            <span id="typed-text"></span><span class="cursor"></span>
+          </p>
+          <p class="hero-description">
+            MS Data Science candidate building intelligent systems at the intersection of machine learning, deep learning, and data engineering. Turning complex data into actionable intelligence.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn-primary">
+              <span>🚀</span> View My Work
+            </a>
+            <a href="#contact" class="btn-outline">
+              <span>✉️</span> Get in Touch
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">9+</div>
+              <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Research Paper</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">Technologies</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="avatar-container">
+            <div class="avatar-glow"></div>
+            <div class="avatar-ring"></div>
+            <img src="avatar.png" alt="Annanahmed Shaikh" class="avatar-img">
+            <div class="orbit-item"><span class="icon">🐍</span> Python</div>
+            <div class="orbit-item"><span class="icon">🧠</span> Deep Learning</div>
+            <div class="orbit-item"><span class="icon">📊</span> Tableau</div>
+            <div class="orbit-item"><span class="icon">🗄️</span> SQL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// About Me</span>
+        <h2 class="section-title">Building the Future with Data</h2>
+        <p class="section-subtitle">Bridging the gap between raw data and real-world impact</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="reveal">Currently pursuing my Master of Science in Data Science at Wentworth Institute of Technology, I am passionate about leveraging the power of machine learning, deep learning, and data engineering to solve real-world problems. My journey spans from building novel transformer architectures and investment intelligence platforms to creating robust ETL pipelines and interactive Tableau dashboards.</p>
+          <p class="reveal">I recently completed a research internship where I co-authored a paper accepted at Interspeech 2026 on SoftSpeech — pushing the boundaries of speech technology. I bring a unique blend of research rigor and engineering pragmatism to every project I take on.</p>
+
+          <div class="about-highlights">
+            <div class="highlight-card reveal">
+              <div class="highlight-icon">🎯</div>
+              <div class="highlight-title">ML & AI Focus</div>
+              <div class="highlight-desc">Deep learning, NLP, transformers, explainable AI</div>
+            </div>
+            <div class="highlight-card reveal">
+              <div class="highlight-icon">⚡</div>
+              <div class="highlight-title">Full Stack DS</div>
+              <div class="highlight-desc">From data pipelines to deployed applications</div>
+            </div>
+            <div class="highlight-card reveal">
+              <div class="highlight-icon">📄</div>
+              <div class="highlight-title">Published Researcher</div>
+              <div class="highlight-desc">Interspeech 2026 paper co-author</div>
+            </div>
+            <div class="highlight-card reveal">
+              <div class="highlight-icon">🏗️</div>
+              <div class="highlight-title">Data Engineering</div>
+              <div class="highlight-desc">SQL, ETL, star schema, database design</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-info-cards">
+          <div class="info-card reveal">
+            <div class="info-card-icon">🎓</div>
+            <div class="info-card-content">
+              <h4>Education</h4>
+              <p>MS Data Science — Wentworth Institute of Technology</p>
+            </div>
+          </div>
+          <div class="info-card reveal">
+            <div class="info-card-icon">📍</div>
+            <div class="info-card-content">
+              <h4>Location</h4>
+              <p>Boston, MA, USA</p>
+            </div>
+          </div>
+          <div class="info-card reveal">
+            <div class="info-card-icon">💼</div>
+            <div class="info-card-content">
+              <h4>Seeking</h4>
+              <p>Full-Time Data Science / ML Engineer Roles</p>
+            </div>
+          </div>
+          <div class="info-card reveal">
+            <div class="info-card-icon">📧</div>
+            <div class="info-card-content">
+              <h4>Email</h4>
+              <p>annan.shaikh0404@gmail.com</p>
+            </div>
+          </div>
+          <div class="info-card reveal">
+            <div class="info-card-icon">🔗</div>
+            <div class="info-card-content">
+              <h4>GitHub</h4>
+              <p><a href="https://github.com/annanshaikh04" target="_blank" style="color: var(--accent-blue);">github.com/annanshaikh04</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// Technical Arsenal</span>
+        <h2 class="section-title">Skills & Technologies</h2>
+        <p class="section-subtitle">A curated toolkit for tackling complex data challenges</p>
+      </div>
+      <div class="skills-grid stagger-children">
+        <div class="skill-category reveal" style="--category-color: linear-gradient(135deg, #3b82f6, #60a5fa);">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">💻</span>
+            <h3 class="skill-category-title">Languages</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML/CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" style="--category-color: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">🧠</span>
+            <h3 class="skill-category-title">Machine Learning & AI</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Scikit-Learn</span>
+            <span class="skill-tag">Transformers (HuggingFace)</span>
+            <span class="skill-tag">SHAP / LIME</span>
+            <span class="skill-tag">UMAP</span>
+            <span class="skill-tag">HDBSCAN</span>
+            <span class="skill-tag">Random Forest</span>
+            <span class="skill-tag">Gradient Boosting</span>
+            <span class="skill-tag">ARIMA / SARIMA</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" style="--category-color: linear-gradient(135deg, #06b6d4, #22d3ee);">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">🏗️</span>
+            <h3 class="skill-category-title">Data Engineering</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">Star Schema</span>
+            <span class="skill-tag">ETL Pipelines</span>
+            <span class="skill-tag">pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Data Modeling</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" style="--category-color: linear-gradient(135deg, #10b981, #34d399);">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">📈</span>
+            <h3 class="skill-category-title">Visualization & Analytics</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Streamlit</span>
+            <span class="skill-tag">Plotly</span>
+            <span class="skill-tag">Data Storytelling</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" style="--category-color: linear-gradient(135deg, #f59e0b, #fbbf24);">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">🔧</span>
+            <h3 class="skill-category-title">Tools & Platforms</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">Jupyter</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">CUDA</span>
+            <span class="skill-tag">HPC Clusters</span>
+            <span class="skill-tag">Streamlit Cloud</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" style="--category-color: linear-gradient(135deg, #ec4899, #f472b6);">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">🔬</span>
+            <h3 class="skill-category-title">Research & Methods</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">Speech Processing</span>
+            <span class="skill-tag">Attention Mechanisms</span>
+            <span class="skill-tag">Dimensionality Reduction</span>
+            <span class="skill-tag">Statistical Analysis</span>
+            <span class="skill-tag">Hypothesis Testing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">A selection of work spanning ML, AI, data engineering, and visualization</p>
+      </div>
+
+      <div class="project-filters reveal">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="ml-ai">ML & AI</button>
+        <button class="filter-btn" data-filter="data-eng">Data Engineering</button>
+        <button class="filter-btn" data-filter="visualization">Visualization</button>
+      </div>
+
+      <div class="projects-grid stagger-children">
+
+        <!-- FEATURED: VentureFlow AI (Capstone) -->
+        <div class="project-card featured reveal" data-category="ml-ai">
+          <div class="project-card-visual">
+            <div class="featured-visual-content">
+              <div class="big-icon">🚀</div>
+              <span class="live-badge"><span class="dot"></span> Live Application</span>
+            </div>
+          </div>
+          <div class="project-card-content">
+            <span class="project-category-label">Capstone Project — ML / AI</span>
+            <h3 class="project-title">VentureFlow AI — Investment Intelligence Platform</h3>
+            <p class="project-subtitle">A production-ready decision support system predicting startup success using dual-encoder LLM embeddings (MPNet + MiniLM), SHAP explainability, and a SQL star-schema data warehouse. Deployed live on Streamlit Cloud.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Random Forest</span>
+              <span class="tech-tag">LLM Embeddings</span>
+              <span class="tech-tag">SHAP</span>
+              <span class="tech-tag">SQL Star Schema</span>
+              <span class="tech-tag">PCA</span>
+            </div>
+            <div class="project-result">
+              <div class="result-item">
+                <div class="result-value">0.71+</div>
+                <div class="result-label">ROC-AUC</div>
+              </div>
+              <div class="result-item">
+                <div class="result-value">47K+</div>
+                <div class="result-label">Startups Analyzed</div>
+              </div>
+              <div class="result-item">
+                <div class="result-value">95%+</div>
+                <div class="result-label">Precision@200</div>
+              </div>
+            </div>
+            <div class="project-links" style="margin-top: 16px;">
+              <a href="https://ventureflow-ai.streamlit.app/" target="_blank" class="btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">
+                <span>🌐</span> Live Demo
+              </a>
+              <a href="https://github.com/annanshaikh04/Data-6950_Capstone_Project" target="_blank" class="btn-outline" style="padding: 10px 20px; font-size: 0.85rem;">
+                <span>⌨️</span> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Backward Attention GPT-2 -->
+        <div class="project-card reveal" data-category="ml-ai">
+          <div class="project-card-header">
+            <div class="project-icon" style="--project-color: rgba(139,92,246,0.15);">🧪</div>
+            <div class="project-links">
+              <a href="https://github.com/annanshaikh04/DATA-6300-Major-Project" target="_blank" class="project-link" title="GitHub">⌨️</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <span class="project-category-label">Deep Learning Research</span>
+            <h3 class="project-title">Backward Attention Fine-Tuning for GPT-2</h3>
+            <p class="project-subtitle">A novel fine-tuning approach introducing a backward attention head atop frozen GPT-2 for enhanced math reasoning. Only trains the new attention layer — computationally efficient and modular.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">GPT-2</span>
+              <span class="tech-tag">HuggingFace</span>
+              <span class="tech-tag">CUDA</span>
+              <span class="tech-tag">Attention Mechanism</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Fake News Detection -->
+        <div class="project-card reveal" data-category="ml-ai">
+          <div class="project-card-header">
+            <div class="project-icon" style="--project-color: rgba(236,72,153,0.15);">📰</div>
+            <div class="project-links">
+              <a href="https://github.com/annanshaikh04/DATA_6250_Fake-News-Detection-ML" target="_blank" class="project-link" title="GitHub">⌨️</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <span class="project-category-label">Machine Learning</span>
+            <h3 class="project-title">Fake News Detection — ML Pipeline</h3>
+            <p class="project-subtitle">End-to-end fake news classification using transformer embeddings, UMAP dimensionality reduction, HDBSCAN clustering, and 8 rigorous experiments. Gradient Boosting selected as best model.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Sentence Transformers</span>
+              <span class="tech-tag">UMAP</span>
+              <span class="tech-tag">HDBSCAN</span>
+              <span class="tech-tag">SHAP</span>
+              <span class="tech-tag">Gradient Boosting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Startup Success LLM -->
+        <div class="project-card reveal" data-category="ml-ai">
+          <div class="project-card-header">
+            <div class="project-icon" style="--project-color: rgba(59,130,246,0.15);">🤖</div>
+            <div class="project-links">
+              <a href="https://github.com/annanshaikh04/startup-success-prediction-LLM" target="_blank" class="project-link" title="GitHub">⌨️</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <span class="project-category-label">LLM / NLP</span>
+            <h3 class="project-title">Startup Success Prediction — LLM Analysis</h3>
+            <p class="project-subtitle">Leveraging large language models to analyze and predict startup success patterns through textual data analysis and semantic embeddings of company descriptions.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">LLM</span>
+              <span class="tech-tag">NLP</span>
+              <span class="tech-tag">Jupyter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: Startup Success Tableau -->
+        <div class="project-card reveal" data-category="visualization">
+          <div class="project-card-header">
+            <div class="project-icon" style="--project-color: rgba(245,158,11,0.15);">📊</div>
+            <div class="project-links">
+              <a href="https://public.tableau.com/app/profile/annanahmed.shaikh3774/viz/UnvellingStartupSuccessPatternbyAnnanahmedShaikh/Story1" target="_blank" class="project-link" title="Tableau">📊</a>
+              <a href="https://github.com/annanshaikh04/startup-success-tableau" target="_blank" class="project-link" title="GitHub">⌨️</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <span class="project-category-label">Data Visualization</span>
+            <h3 class="project-title">Startup Success Playbook — Tableau Dashboard</h3>
+            <p class="project-subtitle">An interactive 3-act data story analyzing 50,000+ startups across sectors — unveiling funding patterns, industry insights, and regional ecosystem dynamics for smart investments.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Tableau</span>
+              <span class="tech-tag">Data Storytelling</span>
+              <span class="tech-tag">Crunchbase Data</span>
+              <span class="tech-tag">50K+ Startups</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: EV Charging -->
+        <div class="project-card reveal" data-category="data-eng">
+          <div class="project-card-header">
+            <div class="project-icon" style="--project-color: rgba(16,185,129,0.15);">⚡</div>
+            <div class="project-links">
+              <a href="https://github.com/annanshaikh04/Applied-Stats-EV-Charging-Load-Profiling" target="_blank" class="project-link" title="GitHub">⌨️</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <span class="project-category-label">Applied Statistics</span>
+            <h3 class="project-title">EV Charging Load Profiling</h3>
+            <p class="project-subtitle">Per-station, per-hour load profiling for EV charging sessions with proportional overlap allocation, timezone-safe parsing, and a fully reproducible R pipeline.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">R</span>
+              <span class="tech-tag">Statistics</span>
+              <span class="tech-tag">Time Series</span>
+              <span class="tech-tag">Data Processing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 7: Energy Demand Forecasting -->
+        <div class="project-card reveal" data-category="data-eng">
+          <div class="project-card-header">
+            <div class="project-icon" style="--project-color: rgba(6,182,212,0.15);">🔋</div>
+            <div class="project-links">
+              <a href="https://github.com/annanshaikh04/Data_6150_Individual-Project" target="_blank" class="project-link" title="GitHub">⌨️</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <span class="project-category-label">Time Series Analysis</span>
+            <h3 class="project-title">Energy Demand Forecasting</h3>
+            <p class="project-subtitle">24-hour-ahead energy demand forecasting using Naïve, Exponential Smoothing, ARIMA, and SARIMA models. Includes seasonal analysis and grid operation optimization insights.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">ARIMA</span>
+              <span class="tech-tag">SARIMA</span>
+              <span class="tech-tag">statsmodels</span>
+              <span class="tech-tag">pmdarima</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 8: OULAD Student Analytics DB -->
+        <div class="project-card reveal" data-category="data-eng">
+          <div class="project-card-header">
+            <div class="project-icon" style="--project-color: rgba(59,130,246,0.15);">🗄️</div>
+            <div class="project-links">
+              <a href="https://github.com/annanshaikh04/OULAD-Student-Analytics-DB" target="_blank" class="project-link" title="GitHub">⌨️</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <span class="project-category-label">Database Design</span>
+            <h3 class="project-title">OULAD Student Performance & Engagement DB</h3>
+            <p class="project-subtitle">A full database project with normalized schema, Python ETL scripts, integrity audits, roles, views, and stored procedures using the Open University Learning Analytics Dataset.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Python ETL</span>
+              <span class="tech-tag">Normalization</span>
+              <span class="tech-tag">ERD</span>
+              <span class="tech-tag">Stored Procedures</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 9: Data Transformation -->
+        <div class="project-card reveal" data-category="data-eng">
+          <div class="project-card-header">
+            <div class="project-icon" style="--project-color: rgba(139,92,246,0.15);">🔄</div>
+            <div class="project-links">
+              <a href="https://github.com/annanshaikh04/Data-Science-Foundation-Data-Transformation" target="_blank" class="project-link" title="GitHub">⌨️</a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <span class="project-category-label">Data Engineering</span>
+            <h3 class="project-title">Data Transformation Pipeline</h3>
+            <p class="project-subtitle">A clean, reproducible data transformation pipeline for the Notable AI Models dataset — featuring structured data wrangling, scripted transforms, and Jupyter exploration.</p>
+            <div class="project-tech-stack">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">pandas</span>
+              <span class="tech-tag">Data Wrangling</span>
+              <span class="tech-tag">Jupyter</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE & EDUCATION ========== -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// Journey</span>
+        <h2 class="section-title">Experience & Education</h2>
+        <p class="section-subtitle">My academic and professional path</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2026 (3 Months)</div>
+            <h3 class="timeline-title">Research Intern — Speech Technology</h3>
+            <div class="timeline-org">Internship • Co-authored Interspeech 2026 Paper</div>
+            <div class="timeline-desc">
+              <ul>
+                <li>Co-authored "SoftSpeech" paper accepted at Interspeech 2026</li>
+                <li>Conducted research in speech processing and enhancement</li>
+                <li>Applied deep learning techniques to speech technology challenges</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2024 — 2026</div>
+            <h3 class="timeline-title">Master of Science in Data Science</h3>
+            <div class="timeline-org">Wentworth Institute of Technology • Boston, MA</div>
+            <div class="timeline-desc">
+              <ul>
+                <li>Capstone: Built VentureFlow AI — Investment Intelligence Platform</li>
+                <li>Coursework: Machine Learning, Deep Learning, Applied Statistics, Data Engineering</li>
+                <li>Key projects include GPT-2 research, Fake News Detection, and multiple database & analytics projects</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PUBLICATIONS ========== -->
+  <section id="publications">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// Research</span>
+        <h2 class="section-title">Publications</h2>
+        <p class="section-subtitle">Contributing to the research community</p>
+      </div>
+
+      <div class="publication-card reveal">
+        <span class="publication-badge">📄 Conference Paper</span>
+        <h3 class="publication-title">SoftSpeech</h3>
+        <div class="publication-venue">Interspeech 2026</div>
+        <p class="publication-desc">
+          A research paper on speech technology, co-authored during a 3-month research internship. Accepted for presentation at Interspeech 2026 — one of the premier conferences in speech and language processing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">// Let's Connect</span>
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">Actively seeking full-time opportunities starting April 2026</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>Let's build something amazing together.</h3>
+          <p>I'm actively looking for full-time Data Scientist, ML Engineer, or Data Engineer roles. Let's chat about how I can contribute to your team.</p>
+
+          <div class="contact-links">
+            <a href="mailto:annan.shaikh0404@gmail.com" class="contact-link-item">
+              <div class="contact-icon email">📧</div>
+              <div>
+                <div class="contact-link-text">Email</div>
+                <div class="contact-link-value">annan.shaikh0404@gmail.com</div>
+              </div>
+            </a>
+            <a href="https://github.com/annanshaikh04" target="_blank" class="contact-link-item">
+              <div class="contact-icon github">⌨️</div>
+              <div>
+                <div class="contact-link-text">GitHub</div>
+                <div class="contact-link-value">github.com/annanshaikh04</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/annanahmed-shaikh" target="_blank" class="contact-link-item">
+              <div class="contact-icon linkedin">🔗</div>
+              <div>
+                <div class="contact-link-text">LinkedIn</div>
+                <div class="contact-link-value">linkedin.com/in/annanahmed-shaikh</div>
+              </div>
+            </a>
+            <a href="https://public.tableau.com/app/profile/annanahmed.shaikh3774/vizzes" target="_blank" class="contact-link-item">
+              <div class="contact-icon tableau">📊</div>
+              <div>
+                <div class="contact-link-text">Tableau Portfolio</div>
+                <div class="contact-link-value">Tableau Public Profile</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="subject" placeholder="Subject">
+          </div>
+          <div class="form-group">
+            <textarea id="message" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-submit">
+            <span>✉️</span> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-text">&copy; 2026 Annanahmed Shaikh. Crafted with 💜 and data.</p>
+        <div class="footer-socials">
+          <a href="https://github.com/annanshaikh04" target="_blank" class="footer-social" title="GitHub">⌨️</a>
+          <a href="https://www.linkedin.com/in/annanahmed-shaikh" target="_blank" class="footer-social" title="LinkedIn">🔗</a>
+          <a href="https://public.tableau.com/app/profile/annanahmed.shaikh3774/vizzes" target="_blank" class="footer-social" title="Tableau">📊</a>
+          <a href="mailto:annan.shaikh0404@gmail.com" class="footer-social" title="Email">📧</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
