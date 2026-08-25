@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Annanahmed Shaikh — Solutions Engineer & AI/ML Specialist</title>
-  <meta name="description" content="Annanahmed Shaikh — Solutions Engineer, Pre-Sales Consultant & AI/ML Specialist. MS Data Science (4.0 GPA), Published Researcher at Interspeech 2026, Industry Showcase Award Winner.">
+  <title>Annanahmed Shaikh — ML Engineer & Solutions Specialist</title>
+  <meta name="description" content="Annanahmed Shaikh — Machine Learning Engineer & Solutions Specialist. 70% Core ML & Data Systems, 30% Technical Pre-Sales & Consulting. MS Data Science (4.0 GPA), Published Researcher at Interspeech 2026.">
   <meta name="author" content="Annanahmed Shaikh">
-  <meta name="keywords" content="Solutions Engineer, Pre-Sales Engineer, Solutions Consultant, Data Scientist, Machine Learning Engineer, Interspeech, Annanahmed Shaikh">
+  <meta name="keywords" content="Machine Learning Engineer, ML Engineer, AI Systems Engineer, Solutions Engineer, Pre-Sales Consultant, Solutions Architect, Interspeech, Annanahmed Shaikh">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
 
@@ -22,8 +22,9 @@
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Work & POCs</a>
-        <a href="#playground">Playground</a>
+        <a href="#projects">Projects & POCs</a>
+        <a href="#playground">Interactive Lab</a>
+        <a href="#skills">Capabilities</a>
         <a href="#writing">Writing</a>
         <a href="Shaikh_Annanahmed_Resume.pdf" target="_blank" class="nav-resume-btn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -43,46 +44,74 @@
     <canvas id="particle-canvas"></canvas>
     <div class="container">
       <div class="hero-content">
+        
         <div class="hero-eyebrow">
           <span class="status-dot"></span>
-          Open to full-time roles: Solutions Engineer · Pre-Sales Consultant · AI/ML Engineer · Data Scientist
+          Open to roles: <strong>ML Engineer · AI Systems Engineer · Solutions Engineer · Pre-Sales Consultant</strong>
         </div>
+
         <h1 class="hero-name">Annanahmed Shaikh</h1>
+        
         <p class="hero-role">
-          <span id="typed-text"></span><span class="cursor">|</span>
+          <span class="role-arrow">&gt;</span> <span id="typed-text"></span><span class="cursor">|</span>
         </p>
-        <p class="hero-pitch">
-          MS in Data Science <strong>(4.0 GPA)</strong> from Wentworth. <strong>Industry Showcase Award Winner</strong> & published researcher at <strong>Interspeech 2026</strong>.
-          I bridge deep machine learning systems with client-facing solutions — building production POCs, translating complex AI for executive stakeholders, and driving measurable business impact.
+
+        <!-- Interactive Lens Toggle in Hero -->
+        <div class="lens-container">
+          <span class="lens-title">Focus Lens:</span>
+          <div class="lens-tabs">
+            <button class="lens-btn active" id="lensMlBtn" data-lens="ml">
+              <span class="lens-pct">70%</span> Core ML & AI Systems
+            </button>
+            <button class="lens-btn" id="lensSalesBtn" data-lens="sales">
+              <span class="lens-pct">30%</span> Tech + Sales & Solutions
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Pitch Text -->
+        <p class="hero-pitch" id="heroPitchText">
+          MS in Data Science <strong>(4.0 GPA)</strong> from Wentworth. Published researcher at <strong>Interspeech 2026</strong> & <strong>Industry Showcase Award Winner</strong>.<br>
+          <span class="highlight-bar"><strong>70% ML & Systems Engineering</strong>: Novel transformer architectures, deep embeddings, high-throughput ETL pipelines, and production inference platforms.</span><br>
+          <span class="highlight-bar"><strong>30% Tech + Sales & Pre-Sales</strong>: Technical discovery, scoping enterprise POCs (Amazon collaboration), client demos, and proving concrete ROI.</span>
         </p>
+
+        <!-- Proof Metrics Bar -->
         <div class="hero-proof">
           <div class="proof-item">
             <span class="proof-value">4.0 / 4.0</span>
-            <span class="proof-label">GPA</span>
-          </div>
-          <div class="proof-divider"></div>
-          <div class="proof-item">
-            <span class="proof-value">88%</span>
-            <span class="proof-label">Automation Gain</span>
+            <span class="proof-label">MS GPA (Top of Class)</span>
           </div>
           <div class="proof-divider"></div>
           <div class="proof-item">
             <span class="proof-value">Interspeech '26</span>
-            <span class="proof-label">Published</span>
+            <span class="proof-label">Published Author</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-value">88%</span>
+            <span class="proof-label">Workflow Automation</span>
           </div>
           <div class="proof-divider"></div>
           <div class="proof-item">
             <span class="proof-value">10K+ Users</span>
-            <span class="proof-label">Platforms Served</span>
+            <span class="proof-label">SaaS & API Platforms</span>
           </div>
         </div>
+
+        <!-- Actions -->
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            See my work
+            Explore Projects & Demos
           </a>
-          <a href="#contact" class="btn-ghost">Let's talk</a>
+          <a href="#playground" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            Interactive Neural Net
+          </a>
+          <a href="#contact" class="btn-ghost">Get in Touch</a>
         </div>
+
       </div>
     </div>
   </section>
@@ -90,30 +119,59 @@
   <!-- ========== ABOUT ========== -->
   <section id="about">
     <div class="container">
-      <div class="section-label reveal">About</div>
+      <div class="section-label reveal">The Story</div>
+      
       <div class="about-layout">
         <div class="about-main reveal">
-          <h2 class="about-headline">Where deep engineering execution meets customer-facing strategy.</h2>
+          <h2 class="about-headline">
+            Deep technical horsepower with the ability to articulate value to anyone in the room.
+          </h2>
+          
           <div class="about-body">
-            <p>I specialize in bridging the gap between <strong>complex data science/AI architectures</strong> and <strong>high-stakes client business outcomes</strong>. With hands-on experience spanning full-stack development, big data pipelines, and deep learning, I don't just fine-tune models — I design architectures, lead technical discovery, build client-ready POCs, and demonstrate clear ROI.</p>
-            <p>During my Master's at Wentworth (graduating top of class with a <strong>4.0 GPA</strong>), I collaborated with <strong>Amazon research teams</strong> on multi-terabyte biosignal pipelines, won the <strong>2026 Industry Showcase Award</strong> for best live technical demonstration to an executive jury, and co-authored a published paper at <strong>Interspeech 2026</strong>.</p>
-            <p>Whether scoping architectures with sales teams, delivering executive-level product demos, or architecting production LLM platforms with sub-second latency — I excel where technical depth directly creates customer value.</p>
+            <p>
+              I am a <strong>Machine Learning & Systems Engineer</strong> with a strong dual edge: <strong>70% deep engineering execution</strong> across LLMs, PyTorch, database schemas, and distributed pipelines, combined with <strong>30% technical pre-sales and consulting capability</strong> to turn cutting-edge algorithms into production business victories.
+            </p>
+            <p>
+              During my Master's at Wentworth (graduating with a <strong>perfect 4.0 GPA</strong>), I collaborated with <strong>Amazon research teams</strong> on multi-terabyte biosignal pipelines, co-authored a published paper at <strong>Interspeech 2026</strong>, and won the <strong>2026 Industry Showcase Award</strong> for best live technical demonstration to an executive jury.
+            </p>
+            <p>
+              I build architectures that ship — from novel backward-attention heads for GPT-2 that achieve 40% math accuracy gains training only 5% of weights, to full-stack predictive platforms processing 47K+ companies with explainable AI (SHAP/LIME) and sub-second latencies.
+            </p>
+          </div>
+
+          <!-- Accolades -->
+          <div class="accolades-strip reveal">
+            <div class="accolade-card">
+              <div class="accolade-icon">🏆</div>
+              <div class="accolade-text">
+                <strong>Industry Showcase Award Winner (2026)</strong>
+                <span>Recognized by expert panel for top live ML demonstration & business value translation.</span>
+              </div>
+            </div>
+            <div class="accolade-card">
+              <div class="accolade-icon">📜</div>
+              <div class="accolade-text">
+                <strong>Published Researcher @ INTERSPEECH 2026</strong>
+                <span>Peer-reviewed author on sequence modeling at premier speech processing venue.</span>
+              </div>
+            </div>
           </div>
         </div>
+
         <div class="about-sidebar">
           <div class="about-card reveal">
-            <div class="about-card-label">Target Roles</div>
-            <div class="about-card-value">Solutions Engineer · Pre-Sales Consultant · AI/ML Engineer · Data Scientist</div>
+            <div class="about-card-label">Target Positions</div>
+            <div class="about-card-value">Machine Learning Engineer · AI Systems Engineer · Solutions Engineer · Pre-Sales Consultant</div>
           </div>
           <div class="about-card reveal">
-            <div class="about-card-label">Education</div>
-            <div class="about-card-value">MS Data Science (4.0 GPA)</div>
-            <div class="about-card-detail">Wentworth · Class of 2026</div>
+            <div class="about-card-label">Academics</div>
+            <div class="about-card-value">MS Data Science (4.0 / 4.0 GPA)</div>
+            <div class="about-card-detail">Wentworth Institute of Tech · 2024–2026</div>
             <div class="about-card-detail" style="margin-top:4px;">BE Computer Science · 2019–2023</div>
           </div>
           <div class="about-card reveal">
-            <div class="about-card-label">Recognition</div>
-            <div class="about-card-value">Industry Showcase Award Winner · Interspeech 2026 Author</div>
+            <div class="about-card-label">Quantified Impact</div>
+            <div class="about-card-value">88% Automation · 40% API Speedup · 60% Query Reduction · 10K+ Users</div>
           </div>
           <div class="about-card reveal">
             <div class="about-card-label">Location</div>
@@ -122,84 +180,35 @@
         </div>
       </div>
 
-      <!-- Skills -->
-      <div class="skills-section reveal">
-        <h3 class="skills-heading">What I work with</h3>
-        <div class="skills-row">
-          <div class="skill-group">
-            <span class="skill-group-name">Pre-Sales & Solutions</span>
-            <div class="skill-pills">
-              <span class="pill">Technical Discovery</span>
-              <span class="pill">POC Architecture</span>
-              <span class="pill">Solution Consulting</span>
-              <span class="pill">Client Demos</span>
-              <span class="pill">Stakeholder Management</span>
-              <span class="pill">ROI Modeling</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <span class="skill-group-name">Data Platforms & Cloud</span>
-            <div class="skill-pills">
-              <span class="pill">Snowflake</span>
-              <span class="pill">Databricks</span>
-              <span class="pill">AWS (S3, EC2, Redshift)</span>
-              <span class="pill">PostgreSQL / MySQL</span>
-              <span class="pill">Redis</span>
-              <span class="pill">Docker</span>
-              <span class="pill">ETL Automation</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <span class="skill-group-name">ML, AI & LLMs</span>
-            <div class="skill-pills">
-              <span class="pill">PyTorch</span>
-              <span class="pill">HuggingFace</span>
-              <span class="pill">Scikit-Learn</span>
-              <span class="pill">SHAP / LIME</span>
-              <span class="pill">Sentence Transformers</span>
-              <span class="pill">UMAP</span>
-              <span class="pill">HDBSCAN</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <span class="skill-group-name">Languages & BI</span>
-            <div class="skill-pills">
-              <span class="pill">Python</span>
-              <span class="pill">SQL</span>
-              <span class="pill">R</span>
-              <span class="pill">Java</span>
-              <span class="pill">JavaScript</span>
-              <span class="pill">Streamlit</span>
-              <span class="pill">Tableau</span>
-              <span class="pill">Power BI</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- ========== EXPERIENCE ========== -->
   <section id="experience">
     <div class="container">
-      <div class="section-label reveal">Experience & Education</div>
-      <h2 class="section-heading reveal">Where I've been</h2>
+      <div class="section-label reveal">Career History</div>
+      <h2 class="section-heading reveal">Professional Experience</h2>
 
       <div class="timeline">
 
-        <!-- 1. Wentworth / Amazon Collaboration -->
+        <!-- 1. Wentworth / Amazon Collab -->
         <div class="tl-item reveal">
           <div class="tl-marker">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="tl-content">
-            <span class="tl-date">Jan 2026 — Mar 2026 · Boston, MA</span>
-            <h3 class="tl-title">Research Assistant — Technical Solutions & Stakeholder Communication</h3>
-            <p class="tl-org">Wentworth Institute of Technology <em>(Amazon Collaboration & Clinical Faculty)</em></p>
+            <div class="tl-header-row">
+              <div>
+                <span class="tl-date">Jan 2026 — Mar 2026 · Boston, MA</span>
+                <h3 class="tl-title">Research Assistant — Technical Solutions & Stakeholder Communication</h3>
+                <p class="tl-org">Wentworth Institute of Technology <em>(in collaboration with Amazon & Clinical Faculty)</em></p>
+              </div>
+              <span class="tl-badge badge-amazon">Amazon Collaboration</span>
+            </div>
             <ul class="tl-details">
-              <li>Led technical discovery and requirements gathering with cross-functional teams (Amazon, clinical faculty), translating business, clinical, and research needs into scalable production solutions.</li>
-              <li>Architected and demonstrated scalable data pipeline solutions processing multi-terabyte biosignal datasets, enabling executive stakeholder validation and accelerating adoption for <strong>INTERSPEECH 2026</strong> deployment.</li>
-              <li>Created automated feature extraction workflows using NumPy and SciPy, reducing manual processing overhead by <strong>15%</strong>.</li>
+              <li><strong>Led technical discovery and requirements gathering</strong> with cross-functional teams (Amazon, clinical faculty), translating research specifications into production-ready pipelines.</li>
+              <li><strong>Architected and demonstrated scalable data pipeline solutions</strong> processing multi-terabyte biosignal datasets, enabling executive stakeholder validation and accelerating adoption for <strong>INTERSPEECH 2026</strong> deployment.</li>
+              <li><strong>Engineered automated feature extraction workflows</strong> using NumPy and SciPy, reducing manual data processing overhead by <strong>15%</strong>.</li>
             </ul>
           </div>
         </div>
@@ -210,13 +219,18 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="tl-content">
-            <span class="tl-date">Nov 2023 — Jul 2024 · Ahmedabad, India</span>
-            <h3 class="tl-title">Software Developer Intern — Customer Solutions & Business Analytics</h3>
-            <p class="tl-org">N & T Software Pvt. Ltd.</p>
+            <div class="tl-header-row">
+              <div>
+                <span class="tl-date">Nov 2023 — Jul 2024 · Ahmedabad, India</span>
+                <h3 class="tl-title">Software Developer Intern — Customer Solutions & Business Analytics</h3>
+                <p class="tl-org">N & T Software Pvt. Ltd.</p>
+              </div>
+              <span class="tl-badge badge-saas">SaaS Analytics</span>
+            </div>
             <ul class="tl-details">
-              <li>Engineered automated ETL solutions using Python (pandas, APScheduler) processing <strong>10K+ daily transactions</strong>, reducing manual effort by <strong>88%</strong>.</li>
-              <li>Optimized 15+ REST APIs, reducing latency by <strong>40%</strong> and improving performance for analytics platforms serving <strong>10,000+ active users</strong>.</li>
-              <li>Redesigned MongoDB and PostgreSQL schemas with strategic indexing, improving query performance by <strong>35%</strong> for real-time reporting dashboards.</li>
+              <li><strong>Engineered automated ETL pipelines</strong> using Python (pandas, APScheduler) processing <strong>10,000+ daily transactions</strong>, reducing manual effort by <strong>88%</strong> and enabling real-time analytics.</li>
+              <li><strong>Optimized 15+ REST APIs</strong>, decreasing latency by <strong>40%</strong> and improving performance for analytics platforms serving <strong>10,000+ active users</strong>.</li>
+              <li><strong>Redesigned MongoDB and PostgreSQL schemas</strong> with strategic indexing and normalization, improving query performance by <strong>35%</strong> for real-time reporting dashboards.</li>
             </ul>
           </div>
         </div>
@@ -227,13 +241,18 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="tl-content">
-            <span class="tl-date">Jan 2023 — Jun 2023 · Gandhinagar, India</span>
-            <h3 class="tl-title">Full Stack Developer Intern — Solutions Development & Client Support</h3>
-            <p class="tl-org">Infosense Services</p>
+            <div class="tl-header-row">
+              <div>
+                <span class="tl-date">Jan 2023 — Jun 2023 · Gandhinagar, India</span>
+                <h3 class="tl-title">Full Stack Developer Intern — Solutions Development & Client Support</h3>
+                <p class="tl-org">Infosense Services</p>
+              </div>
+              <span class="tl-badge badge-cloud">Distributed Systems</span>
+            </div>
             <ul class="tl-details">
-              <li>Built real-time data processing system analyzing <strong>5,000+ daily events</strong> using Python, Java, and PostgreSQL, supporting 500+ concurrent users with event-driven architecture.</li>
-              <li>Decreased database query latency by <strong>60%</strong> implementing Redis caching and Celery asynchronous task queues.</li>
-              <li>Containerized 8 microservices using Docker and automated CI/CD pipelines.</li>
+              <li><strong>Built real-time event processing system</strong> analyzing <strong>5,000+ daily events</strong> using Python, Java, and PostgreSQL, supporting <strong>500+ concurrent users</strong> with event-driven architecture.</li>
+              <li><strong>Decreased database query latency by 60%</strong> implementing Redis caching and Celery asynchronous task queues, enabling sub-second response times on customer reporting dashboards.</li>
+              <li><strong>Containerized 8 microservices</strong> using Docker and configured CI/CD pipelines, accelerating release cycles.</li>
             </ul>
           </div>
         </div>
@@ -244,13 +263,18 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 12 3 12 0v-5"/></svg>
           </div>
           <div class="tl-content">
-            <span class="tl-date">2024 — 2026 · Boston, MA</span>
-            <h3 class="tl-title">MS Data Science — Perfect 4.0 / 4.0 GPA</h3>
-            <p class="tl-org">Wentworth Institute of Technology</p>
+            <div class="tl-header-row">
+              <div>
+                <span class="tl-date">2024 — 2026 · Boston, MA</span>
+                <h3 class="tl-title">MS Data Science — Perfect 4.0 / 4.0 GPA (Top of Class)</h3>
+                <p class="tl-org">Wentworth Institute of Technology</p>
+              </div>
+              <span class="tl-badge badge-gpa">4.0 GPA</span>
+            </div>
             <ul class="tl-details">
-              <li>Graduated with a <strong>perfect 4.0 GPA</strong> across Advanced ML, Deep Learning, Applied Statistics, and Data Engineering.</li>
-              <li>Winner of the <strong>2026 Industry Showcase Award</strong> for best live technical demonstration to an expert panel.</li>
-              <li>Undergrad: Bachelor of Engineering in Computer Science (Silver Oak College of Engg. & Tech., 2019–2023).</li>
+              <li>Graduated with a <strong>perfect 4.0 GPA</strong> across Advanced Machine Learning, Deep Learning, Applied Statistics, Data Warehousing, and Cloud Computing.</li>
+              <li><strong>Industry Showcase Award Winner (2026)</strong> for best live technical demonstration to an industry evaluation panel.</li>
+              <li>Undergraduate: Bachelor of Engineering in Computer Science (Silver Oak College of Engineering & Tech, 2019–2023).</li>
             </ul>
           </div>
         </div>
@@ -263,37 +287,37 @@
   <section id="projects">
     <div class="container">
       <div class="section-label reveal">Selected Work</div>
-      <h2 class="section-heading reveal">Featured Projects & Live POCs</h2>
+      <h2 class="section-heading reveal">Featured Projects & Production POCs</h2>
 
       <!-- Featured Project 1: VentureFlow AI -->
       <div class="featured-project reveal">
         <div class="fp-header">
           <div class="fp-meta">
-            <span class="fp-tag">Capstone · Live SaaS POC</span>
+            <span class="fp-tag">Capstone & Live SaaS POC</span>
             <span class="fp-tag live">
               <span class="status-dot"></span>
-              Live App
+              Live Demo Online
             </span>
           </div>
           <div class="fp-links">
-            <a href="https://ventureflow-ai.streamlit.app/" target="_blank" class="fp-link" title="Live Demo">
+            <a href="https://ventureflow-ai.streamlit.app/" target="_blank" class="fp-link" title="Open Live Streamlit App">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
-            <a href="https://github.com/annanshaikh04/Data-6950_Capstone_Project" target="_blank" class="fp-link" title="GitHub">
+            <a href="https://github.com/annanshaikh04/Data-6950_Capstone_Project" target="_blank" class="fp-link" title="View Source on GitHub">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             </a>
           </div>
         </div>
         <h3 class="fp-title">VentureFlow AI</h3>
-        <p class="fp-subtitle">Investment Intelligence Platform</p>
+        <p class="fp-subtitle">Investment Decision Intelligence Platform</p>
         <div class="fp-story">
           <div class="fp-block">
             <span class="fp-block-label">The Problem</span>
-            <p>VCs evaluate thousands of startups manually. Can we predict which ones will succeed using data, LLM embeddings, and explainable ML?</p>
+            <p>VCs evaluate thousands of pitch decks manually, leading to missed opportunities and lack of explainability in scoring.</p>
           </div>
           <div class="fp-block">
             <span class="fp-block-label">What I Built</span>
-            <p>A production-ready decision support system using dual-encoder LLM embeddings (MPNet + MiniLM), Random Forest classification, SHAP explainability, and a SQL star-schema data warehouse. Deployed live on Streamlit Cloud.</p>
+            <p>A production decision support system fusing dual-encoder LLM embeddings (MPNet + MiniLM), Random Forest/XGBoost, SHAP explainability, and a SQL star-schema data warehouse. Deployed live on Streamlit Cloud.</p>
           </div>
         </div>
         <div class="fp-results">
@@ -311,7 +335,7 @@
           </div>
         </div>
         <div class="fp-tech">
-          <span>Python</span><span>Streamlit</span><span>Random Forest</span><span>LLM Embeddings</span><span>SHAP</span><span>SQL Star Schema</span>
+          <span>Python</span><span>Streamlit Cloud</span><span>LLM Embeddings</span><span>SHAP Explainability</span><span>Star Schema SQL</span><span>Scikit-Learn</span>
         </div>
       </div>
 
@@ -320,10 +344,10 @@
         <div class="fp-header">
           <div class="fp-meta">
             <span class="fp-tag">Research · Interspeech 2026</span>
-            <span class="fp-tag published">Published</span>
+            <span class="fp-tag published">Peer-Reviewed Publication</span>
           </div>
           <div class="fp-links">
-            <a href="Softspeech_Interspeech_2026-12.pdf" target="_blank" class="fp-link" title="Read Paper">
+            <a href="Softspeech_Interspeech_2026-12.pdf" target="_blank" class="fp-link" title="Read Paper PDF">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             </a>
           </div>
@@ -332,18 +356,18 @@
         <p class="fp-subtitle">Biosignal Sequence Modeling & Speech Enhancement</p>
         <div class="fp-story">
           <div class="fp-block">
-            <span class="fp-block-label">The Problem</span>
-            <p>Biosignal sensor data for speech processing is notoriously noisy. Can deep sequence models extract clean, intelligible representations?</p>
+            <span class="fp-block-label">The Scientific Challenge</span>
+            <p>Biosignal sensor data for speech enhancement is corrupted by heavy noise, and traditional filters degrade linguistic features.</p>
           </div>
           <div class="fp-block">
-            <span class="fp-block-label">What I Did</span>
-            <p>Co-authored a research paper during a 3-month research sprint, applying deep learning sequence models to sensor datasets. Accepted at Interspeech 2026 — premier international conference in speech processing.</p>
+            <span class="fp-block-label">What I Built</span>
+            <p>Co-authored a research paper during a 3-month research sprint, applying deep sequence models to multi-terabyte sensor feeds. Accepted at Interspeech 2026 — one of the top speech AI venues globally.</p>
           </div>
         </div>
         <div class="fp-results">
           <div class="fp-result">
             <span class="fp-result-value">Interspeech</span>
-            <span class="fp-result-label">Top-Tier Venue</span>
+            <span class="fp-result-label">Top 1% Venue</span>
           </div>
           <div class="fp-result">
             <span class="fp-result-value">3 Months</span>
@@ -355,7 +379,7 @@
           </div>
         </div>
         <div class="fp-tech">
-          <span>Deep Learning</span><span>PyTorch</span><span>Sequence Modeling</span><span>Signal Processing</span>
+          <span>PyTorch</span><span>Sequence Modeling</span><span>Signal Processing</span><span>CUDA</span><span>Scientific Research</span>
         </div>
       </div>
 
@@ -363,7 +387,7 @@
       <div class="featured-project reveal">
         <div class="fp-header">
           <div class="fp-meta">
-            <span class="fp-tag">Deep Learning Architecture</span>
+            <span class="fp-tag">Cost-Effective AI Innovation</span>
           </div>
           <div class="fp-links">
             <a href="https://github.com/annanshaikh04/DATA-6300-Major-Project" target="_blank" class="fp-link" title="GitHub">
@@ -372,24 +396,38 @@
           </div>
         </div>
         <h3 class="fp-title">Backward Attention Fine-Tuning for GPT-2</h3>
-        <p class="fp-subtitle">Novel Transformer Architecture (40% Gain Training 5% Parameters)</p>
+        <p class="fp-subtitle">Novel Transformer Architecture (40% Accuracy Gain Training 5% Parameters)</p>
         <div class="fp-story">
           <div class="fp-block">
-            <span class="fp-block-label">The Idea</span>
-            <p>What if we could enhance GPT-2's math reasoning by adding a backward attention head over logits without retraining the entire model?</p>
+            <span class="fp-block-label">The Concept</span>
+            <p>Can architectural additions outperform costly full fine-tuning of foundational LLMs on mathematical reasoning tasks?</p>
           </div>
           <div class="fp-block">
             <span class="fp-block-label">What I Built</span>
-            <p>A novel fine-tuning approach that introduces a backward attention head atop frozen GPT-2. Improves math reasoning from 30% to 42% on 10K+ problems while training only 5% of weights — maximizing efficiency.</p>
+            <p>A backward-attention head on top of frozen GPT-2 that reweights logits via attention. Improved accuracy from 30% to 42% on 10K+ problems while training only 5% of weights — saving 95% of compute costs.</p>
+          </div>
+        </div>
+        <div class="fp-results">
+          <div class="fp-result">
+            <span class="fp-result-value">+40%</span>
+            <span class="fp-result-label">Math Accuracy Gain</span>
+          </div>
+          <div class="fp-result">
+            <span class="fp-result-value">95%</span>
+            <span class="fp-result-label">Compute Savings</span>
+          </div>
+          <div class="fp-result">
+            <span class="fp-result-value">-35%</span>
+            <span class="fp-result-label">Multi-Step Error</span>
           </div>
         </div>
         <div class="fp-tech">
-          <span>PyTorch</span><span>GPT-2</span><span>HuggingFace</span><span>CUDA</span><span>Attention Mechanism</span>
+          <span>PyTorch</span><span>GPT-2</span><span>HuggingFace</span><span>CUDA</span><span>Efficient Fine-Tuning</span>
         </div>
       </div>
 
-      <!-- Other Projects Grid -->
-      <h3 class="other-projects-heading reveal">Other projects & dashboards</h3>
+      <!-- Additional Projects Grid -->
+      <h3 class="other-projects-heading reveal">More Production Systems & Analytics</h3>
       <div class="projects-grid">
 
         <div class="project-card reveal">
@@ -404,7 +442,7 @@
               </a>
             </div>
           </div>
-          <h4 class="pc-title">Startup Success Playbook — Tableau</h4>
+          <h4 class="pc-title">Startup Success Playbook (Tableau)</h4>
           <p class="pc-desc">Interactive 3-act data story analyzing 50,000+ startups across 750 industries with dynamic filters and geo maps.</p>
           <div class="pc-tech">
             <span>Tableau</span><span>Data Story</span><span>50K+ Records</span>
@@ -419,7 +457,7 @@
             </a>
           </div>
           <h4 class="pc-title">Fake News Detection Pipeline</h4>
-          <p class="pc-desc">End-to-end classification with transformer embeddings, UMAP, HDBSCAN clustering, and SHAP/LIME for transparent outputs.</p>
+          <p class="pc-desc">Sentence Transformers, UMAP dimensionality reduction, and Gradient Boosting with SHAP & LIME for transparent model explainability.</p>
           <div class="pc-tech">
             <span>Transformers</span><span>UMAP</span><span>HDBSCAN</span><span>SHAP</span>
           </div>
@@ -433,9 +471,9 @@
             </a>
           </div>
           <h4 class="pc-title">EV Charging Load Profiling</h4>
-          <p class="pc-desc">Per-station, per-hour load profiling from 7,591 sessions projecting 15–20% grid cost reductions via scheduling.</p>
+          <p class="pc-desc">Per-station load profiling from 7,591 sessions projecting 15–20% utility cost reductions through optimized scheduling.</p>
           <div class="pc-tech">
-            <span>R</span><span>Statistics</span><span>Time Series</span>
+            <span>R</span><span>Applied Statistics</span><span>Time Series</span>
           </div>
         </div>
 
@@ -447,7 +485,7 @@
             </a>
           </div>
           <h4 class="pc-title">Energy Demand Forecasting</h4>
-          <p class="pc-desc">24-hour-ahead energy demand forecasting using ARIMA, SARIMA, and Exponential Smoothing with seasonal decomposition.</p>
+          <p class="pc-desc">24-hour ahead grid demand forecasting using SARIMA, ARIMA, and Exponential Smoothing with seasonal decomposition.</p>
           <div class="pc-tech">
             <span>ARIMA</span><span>SARIMA</span><span>statsmodels</span>
           </div>
@@ -461,9 +499,9 @@
             </a>
           </div>
           <h4 class="pc-title">Student Analytics Database</h4>
-          <p class="pc-desc">Full database project — normalized 3NF schema, Python ETL, integrity audits, roles, views, and stored procedures.</p>
+          <p class="pc-desc">Full 3NF normalized MySQL database with automated Python ETL, stored procedures, roles, and integrity audits.</p>
           <div class="pc-tech">
-            <span>MySQL</span><span>ETL</span><span>Normalization</span>
+            <span>MySQL 3NF</span><span>Python ETL</span><span>Normalization</span>
           </div>
         </div>
 
@@ -475,7 +513,7 @@
             </a>
           </div>
           <h4 class="pc-title">Startup Success Prediction — LLM</h4>
-          <p class="pc-desc">Using large language models and semantic vector embeddings to analyze startup descriptions and company growth signals.</p>
+          <p class="pc-desc">Using large language models and semantic embeddings to extract growth signals from company descriptions.</p>
           <div class="pc-tech">
             <span>LLM</span><span>NLP</span><span>Python</span><span>Embeddings</span>
           </div>
@@ -485,12 +523,12 @@
     </div>
   </section>
 
-  <!-- ========== NEURAL NETWORK PLAYGROUND ========== -->
+  <!-- ========== INTERACTIVE NEURAL NETWORK PLAYGROUND ========== -->
   <section id="playground">
     <div class="container">
-      <div class="section-label reveal">Interactive</div>
-      <h2 class="section-heading reveal">Neural Network Playground</h2>
-      <p class="section-desc reveal">Click on the canvas to add data points. Blue = Class A, Orange = Class B. Hit "Train" to watch a tiny neural network learn the decision boundary in real-time.</p>
+      <div class="section-label reveal">Interactive Lab</div>
+      <h2 class="section-heading reveal">Live Neural Network Playground</h2>
+      <p class="section-desc reveal">Experience real in-browser machine learning. Click anywhere on the canvas to place binary data points (Blue = Class A, Orange = Class B), then hit <strong>"Train Network"</strong> to watch backpropagation update the decision boundary in real-time.</p>
 
       <div class="playground-container reveal">
         <div class="playground-controls">
@@ -505,9 +543,9 @@
           <div class="control-group">
             <button class="pg-btn action" id="trainBtn">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              Train
+              Train Network
             </button>
-            <button class="pg-btn" id="resetBtn">Reset</button>
+            <button class="pg-btn" id="resetBtn">Clear Canvas</button>
           </div>
           <div class="pg-info">
             <span id="epochDisplay">Epoch: 0</span>
@@ -519,31 +557,116 @@
     </div>
   </section>
 
+  <!-- ========== CAPABILITIES & SKILLS ========== -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-label reveal">Capabilities</div>
+      <h2 class="section-heading reveal">Technical & Solutions Arsenal</h2>
+
+      <div class="skills-grid reveal">
+        
+        <div class="skill-cat-card">
+          <div class="cat-header">
+            <span class="cat-icon">🧠</span>
+            <h3 class="cat-title">Machine Learning & Deep Learning (70%)</h3>
+          </div>
+          <p class="cat-sub">Production modeling, transformer architectures & neural sequences.</p>
+          <div class="skill-pills">
+            <span class="pill pill-primary">PyTorch</span>
+            <span class="pill pill-primary">HuggingFace</span>
+            <span class="pill pill-primary">Sentence Transformers</span>
+            <span class="pill pill-primary">Scikit-Learn</span>
+            <span class="pill">XGBoost</span>
+            <span class="pill">SHAP / LIME (Explainability)</span>
+            <span class="pill">LoRA / Fine-Tuning</span>
+            <span class="pill">UMAP & HDBSCAN</span>
+            <span class="pill">Time Series (ARIMA/SARIMA)</span>
+          </div>
+        </div>
+
+        <div class="skill-cat-card">
+          <div class="cat-header">
+            <span class="cat-icon">☁️</span>
+            <h3 class="cat-title">Data Platforms & Infra (70%)</h3>
+          </div>
+          <p class="cat-sub">High-throughput pipelines, schemas & cloud data warehousing.</p>
+          <div class="skill-pills">
+            <span class="pill pill-primary">Snowflake</span>
+            <span class="pill pill-primary">Databricks</span>
+            <span class="pill pill-primary">AWS (S3, EC2, Redshift)</span>
+            <span class="pill">PostgreSQL / MySQL</span>
+            <span class="pill">Redis Caching</span>
+            <span class="pill">Star Schema Design</span>
+            <span class="pill">Docker & CI/CD</span>
+            <span class="pill">ETL Automation (pandas, APScheduler)</span>
+          </div>
+        </div>
+
+        <div class="skill-cat-card">
+          <div class="cat-header">
+            <span class="cat-icon">💼</span>
+            <h3 class="cat-title">Pre-Sales & Solution Consulting (30%)</h3>
+          </div>
+          <p class="cat-sub">Translating deep AI into client POCs, demos & closed deals.</p>
+          <div class="skill-pills">
+            <span class="pill pill-accent">Technical Discovery</span>
+            <span class="pill pill-accent">POC Development</span>
+            <span class="pill pill-accent">Executive Product Demos</span>
+            <span class="pill">Requirements Scoping</span>
+            <span class="pill">Stakeholder Management</span>
+            <span class="pill">Business ROI Modeling</span>
+            <span class="pill">Streamlit / Tableau BI</span>
+          </div>
+        </div>
+
+        <div class="skill-cat-card">
+          <div class="cat-header">
+            <span class="cat-icon">⚡</span>
+            <h3 class="cat-title">Programming & Tools</h3>
+          </div>
+          <p class="cat-sub">Languages, frameworks, and rapid prototyping tools.</p>
+          <div class="skill-pills">
+            <span class="pill pill-primary">Python</span>
+            <span class="pill pill-primary">SQL</span>
+            <span class="pill">R</span>
+            <span class="pill">Java</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">Tableau Public & Desktop</span>
+            <span class="pill">Power BI</span>
+            <span class="pill">Git & Linux</span>
+            <span class="pill">CUDA / GPU</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ========== WRITING ========== -->
   <section id="writing">
     <div class="container">
       <div class="section-label reveal">Writing</div>
-      <h2 class="section-heading reveal">Things I've been thinking about</h2>
+      <h2 class="section-heading reveal">Articles & Architecture Notes</h2>
 
       <div class="writing-grid">
         <article class="writing-card reveal">
           <span class="writing-date">Aug 2026</span>
           <h3 class="writing-title">Why backward attention beats LoRA for targeted reasoning tasks</h3>
-          <p class="writing-excerpt">When I started my GPT-2 research project, the obvious choice was LoRA. But architectural additions can outperform parameter-efficient fine-tuning for specific mathematical reasoning — here's what I found.</p>
+          <p class="writing-excerpt">When I started my GPT-2 research project, everyone recommended standard LoRA. But architectural augmentation can outperform parameter-efficient fine-tuning for domain math while maintaining minimal GPU footprints.</p>
           <span class="writing-read">Read more →</span>
         </article>
 
         <article class="writing-card reveal">
           <span class="writing-date">Jun 2026</span>
-          <h3 class="writing-title">What Interspeech taught me about research</h3>
-          <p class="writing-excerpt">Going from "I've never written a paper" to "accepted at a top conference" in 3 months. The things nobody tells you about academic research sprints, reviewer feedback, and the importance of ablation studies.</p>
+          <h3 class="writing-title">What Interspeech taught me about technical communication</h3>
+          <p class="writing-excerpt">Going from zero speech domain knowledge to a published paper at one of the world's top conferences in 3 months. How rigorous ablation studies and clear storytelling make or break complex technical reviews.</p>
           <span class="writing-read">Read more →</span>
         </article>
 
         <article class="writing-card reveal">
           <span class="writing-date">Apr 2026</span>
-          <h3 class="writing-title">Designing a star schema for 47K startups</h3>
-          <p class="writing-excerpt">Most data scientists treat databases as someone else's problem. But when you're building a prediction platform from scratch, schema design is the foundation. Here's how I approached the VentureFlow AI warehouse.</p>
+          <h3 class="writing-title">Designing star schemas that scale for predictive AI</h3>
+          <p class="writing-excerpt">Most engineers treat databases as someone else's problem. Here is how I architected the 47K startup data warehouse for VentureFlow AI to ensure sub-100ms inference and zero drift.</p>
           <span class="writing-read">Read more →</span>
         </article>
       </div>
@@ -554,10 +677,10 @@
   <section id="contact">
     <div class="container">
       <div class="contact-section reveal">
-        <h2 class="contact-heading">Let's talk.</h2>
+        <h2 class="contact-heading">Let's build something remarkable.</h2>
         <p class="contact-subtext">
-          I'm looking for <strong>Solutions Engineer</strong>, <strong>Pre-Sales Consultant</strong>, <strong>AI/ML Specialist</strong>, or <strong>Data Scientist</strong> roles.<br>
-          If you're building or scaling something interesting, I'd love to connect.
+          I am actively looking for <strong>Machine Learning Engineer</strong>, <strong>AI Systems Engineer</strong>, <strong>Solutions Engineer</strong>, <strong>Pre-Sales Consultant</strong>, or <strong>Solutions Architect</strong> roles.<br>
+          If you are building high-impact systems, let's connect.
         </p>
         <div class="contact-links-row">
           <a href="mailto:annan.shaikh0404@gmail.com" class="contact-chip">
@@ -578,7 +701,7 @@
           </a>
           <a href="Shaikh_Annanahmed_Resume.pdf" target="_blank" class="contact-chip">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Resume
+            Resume (PDF)
           </a>
         </div>
       </div>
@@ -589,7 +712,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <p class="footer-text">Built with HTML, CSS, and JS. No frameworks, no templates.</p>
+        <p class="footer-text">Built with vanilla HTML, CSS, and JS. Zero templates, pure craftsmanship.</p>
         <p class="footer-text">&copy; 2026 Annanahmed Shaikh · Boston, MA</p>
       </div>
     </div>

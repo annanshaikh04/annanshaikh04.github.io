@@ -1,6 +1,7 @@
 /* ============================================
-   ANNANAHMED SHAIKH — Portfolio Interactivity
-   Includes: Neural Network Playground & Effects
+   ANNANAHMED SHAIKH — PORTFOLIO LOGIC
+   70% Core ML & Systems · 30% Tech + Sales
+   Includes: Interactive Lens, Neural Net Playground
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,23 +9,125 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypingEffect();
   initNavbar();
   initScrollReveal();
+  initLensToggle();
   initPlayground();
   initSmoothScroll();
 });
 
-/* ---------- Subtle Particle Canvas ---------- */
+/* ---------- 1. Interactive Lens Toggle (70% ML / 30% Sales) ---------- */
+const lensConfigs = {
+  ml: {
+    phrases: [
+      'Machine Learning & AI Systems Engineer',
+      'Published Researcher @ Interspeech 2026',
+      'Transformer Architectures & Deep Embeddings',
+      'High-Throughput Star Schema Pipelines',
+    ],
+    pitch: `MS in Data Science <strong>(4.0 GPA)</strong> from Wentworth. Published researcher at <strong>Interspeech 2026</strong> & <strong>Industry Showcase Award Winner</strong>.<br>
+    <span class="highlight-bar"><strong>70% Core ML & Systems</strong>: Novel transformer architectures, deep embeddings, high-throughput ETL pipelines, and production inference platforms.</span><br>
+    <span class="highlight-bar"><strong>30% Tech + Sales & Pre-Sales</strong>: Technical discovery, scoping enterprise POCs (Amazon collaboration), client demos, and proving concrete ROI.</span>`
+  },
+  sales: {
+    phrases: [
+      'Solutions Engineer & Pre-Sales Consultant',
+      'Technical Discovery & Enterprise POCs',
+      'Executive Demos & Stakeholder Communication',
+      'Translating Deep AI into Measurable Client ROI',
+    ],
+    pitch: `MS in Data Science <strong>(4.0 GPA)</strong> from Wentworth. <strong>Industry Showcase Award Winner</strong> (Best Live Demo) & Interspeech 2026 author.<br>
+    <span class="highlight-bar"><strong>30% Solutions & Pre-Sales</strong>: Partnering with enterprise clients to scope technical architectures, build client-ready POCs (Amazon collaboration), and demonstrate 88% operational savings.</span><br>
+    <span class="highlight-bar"><strong>70% Deep Engineering Backing</strong>: Backed by rigorous machine learning, distributed systems, and real-time data pipelines.</span>`
+  }
+};
+
+let currentLens = 'ml';
+let typingTimeout = null;
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 50;
+
+function initLensToggle() {
+  const mlBtn = document.getElementById('lensMlBtn');
+  const salesBtn = document.getElementById('lensSalesBtn');
+  const pitchText = document.getElementById('heroPitchText');
+
+  if (!mlBtn || !salesBtn) return;
+
+  mlBtn.addEventListener('click', () => {
+    if (currentLens === 'ml') return;
+    currentLens = 'ml';
+    mlBtn.classList.add('active');
+    salesBtn.classList.remove('active');
+    if (pitchText) pitchText.innerHTML = lensConfigs.ml.pitch;
+    restartTyping();
+  });
+
+  salesBtn.addEventListener('click', () => {
+    if (currentLens === 'sales') return;
+    currentLens = 'sales';
+    salesBtn.classList.add('active');
+    mlBtn.classList.remove('active');
+    if (pitchText) pitchText.innerHTML = lensConfigs.sales.pitch;
+    restartTyping();
+  });
+}
+
+function restartTyping() {
+  if (typingTimeout) clearTimeout(typingTimeout);
+  phraseIndex = 0;
+  charIndex = 0;
+  isDeleting = false;
+  const element = document.getElementById('typed-text');
+  if (element) element.textContent = '';
+  typeLoop();
+}
+
+function initTypingEffect() {
+  typeLoop();
+}
+
+function typeLoop() {
+  const element = document.getElementById('typed-text');
+  if (!element) return;
+
+  const currentPhrases = lensConfigs[currentLens].phrases;
+  const currentPhrase = currentPhrases[phraseIndex % currentPhrases.length];
+
+  if (isDeleting) {
+    element.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+    typingSpeed = 25;
+  } else {
+    element.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+    typingSpeed = 50;
+  }
+
+  if (!isDeleting && charIndex === currentPhrase.length) {
+    typingSpeed = 2200;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % currentPhrases.length;
+    typingSpeed = 350;
+  }
+
+  typingTimeout = setTimeout(typeLoop, typingSpeed);
+}
+
+/* ---------- 2. Particle Canvas ---------- */
 function initParticleCanvas() {
   const canvas = document.getElementById('particle-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let particles = [];
-  let mouse = { x: null, y: null, radius: 100 };
+  let mouse = { x: null, y: null, radius: 110 };
 
   function resize() {
     canvas.width = canvas.parentElement.offsetWidth;
     canvas.height = canvas.parentElement.offsetHeight;
   }
-
   resize();
   window.addEventListener('resize', resize);
 
@@ -33,7 +136,6 @@ function initParticleCanvas() {
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
   });
-
   canvas.addEventListener('mouseleave', () => {
     mouse.x = null;
     mouse.y = null;
@@ -46,9 +148,8 @@ function initParticleCanvas() {
       this.size = Math.random() * 1.5 + 0.3;
       this.speedX = (Math.random() - 0.5) * 0.3;
       this.speedY = (Math.random() - 0.5) * 0.3;
-      this.opacity = Math.random() * 0.4 + 0.05;
+      this.opacity = Math.random() * 0.45 + 0.1;
     }
-
     update() {
       this.x += this.speedX;
       this.y += this.speedY;
@@ -59,8 +160,8 @@ function initParticleCanvas() {
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < mouse.radius) {
           const force = (mouse.radius - dist) / mouse.radius;
-          this.x -= dx * force * 0.015;
-          this.y -= dy * force * 0.015;
+          this.x -= dx * force * 0.018;
+          this.y -= dy * force * 0.018;
         }
       }
 
@@ -69,21 +170,18 @@ function initParticleCanvas() {
       if (this.y < 0) this.y = canvas.height;
       if (this.y > canvas.height) this.y = 0;
     }
-
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+      ctx.fillStyle = `rgba(16, 185, 129, ${this.opacity})`;
       ctx.fill();
     }
   }
 
   function createParticles() {
-    const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 80);
+    const count = Math.min(Math.floor((canvas.width * canvas.height) / 11000), 75);
     particles = [];
-    for (let i = 0; i < count; i++) {
-      particles.push(new Particle());
-    }
+    for (let i = 0; i < count; i++) particles.push(new Particle());
   }
 
   function drawConnections() {
@@ -94,9 +192,9 @@ function initParticleCanvas() {
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < 100) {
-          const opacity = ((100 - dist) / 100) * 0.08;
+          const opacity = ((100 - dist) / 100) * 0.1;
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+          ctx.strokeStyle = `rgba(16, 185, 129, ${opacity})`;
           ctx.lineWidth = 0.5;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
@@ -118,60 +216,9 @@ function initParticleCanvas() {
 
   createParticles();
   animate();
-
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(createParticles, 250);
-  });
 }
 
-/* ---------- Typing Effect ---------- */
-function initTypingEffect() {
-  const element = document.getElementById('typed-text');
-  if (!element) return;
-
-  const phrases = [
-    'Solutions Engineer & Pre-Sales Consultant',
-    'AI & Machine Learning Specialist',
-    'MS Data Science (4.0 GPA) · Interspeech Author',
-    'Full Stack Data Science & POC Architecture',
-  ];
-
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 50;
-
-  function type() {
-    const currentPhrase = phrases[phraseIndex];
-
-    if (isDeleting) {
-      element.textContent = currentPhrase.substring(0, charIndex - 1);
-      charIndex--;
-      typingSpeed = 25;
-    } else {
-      element.textContent = currentPhrase.substring(0, charIndex + 1);
-      charIndex++;
-      typingSpeed = 50;
-    }
-
-    if (!isDeleting && charIndex === currentPhrase.length) {
-      typingSpeed = 2200;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      typingSpeed = 350;
-    }
-
-    setTimeout(type, typingSpeed);
-  }
-
-  setTimeout(type, 800);
-}
-
-/* ---------- Navbar ---------- */
+/* ---------- 3. Navbar ---------- */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
   const navToggle = document.getElementById('navToggle');
@@ -200,7 +247,7 @@ function initNavbar() {
   }
 }
 
-/* ---------- Scroll Reveal ---------- */
+/* ---------- 4. Scroll Reveal ---------- */
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -211,13 +258,13 @@ function initScrollReveal() {
     });
   }, {
     threshold: 0.08,
-    rootMargin: '0px 0px -30px 0px'
+    rootMargin: '0px 0px -25px 0px'
   });
 
   reveals.forEach(el => observer.observe(el));
 }
 
-/* ---------- Smooth Scroll ---------- */
+/* ---------- 5. Smooth Scroll ---------- */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -230,11 +277,7 @@ function initSmoothScroll() {
   });
 }
 
-/* ============================================
-   NEURAL NETWORK PLAYGROUND
-   A tiny 2-layer neural network that learns
-   a 2D decision boundary in real-time.
-   ============================================ */
+/* ---------- 6. Neural Network Playground ---------- */
 function initPlayground() {
   const canvas = document.getElementById('playground-canvas');
   if (!canvas) return;
@@ -287,7 +330,7 @@ function initPlayground() {
     if (dataPoints.length < 2) return;
     if (training) {
       training = false;
-      trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train';
+      trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train Network';
       if (animFrameId) cancelAnimationFrame(animFrameId);
       return;
     }
@@ -299,7 +342,7 @@ function initPlayground() {
     training = true;
     epoch = 0;
     network = createNetwork();
-    trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause';
+    trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause Training';
     trainLoop();
   });
 
@@ -310,7 +353,7 @@ function initPlayground() {
     epoch = 0;
     epochDisplay.textContent = 'Epoch: 0';
     lossDisplay.textContent = 'Loss: —';
-    trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train';
+    trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train Network';
     if (animFrameId) cancelAnimationFrame(animFrameId);
     drawScene();
   });
