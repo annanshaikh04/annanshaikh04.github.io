@@ -1,12 +1,6 @@
 /* ============================================
-   ANNANAHMED SHAIKH — PORTFOLIO INTERACTIVITY
-   Includes:
-   - Dynamic Persona / Lens Filter
-   - Solutions ROI & Pipeline Estimator
-   - Interactive Terminal (CLI)
-   - Real-time Neural Network Classifier
-   - Particle Canvas & Smooth Scroll
-   - Copy-to-Clipboard Toast
+   ANNANAHMED SHAIKH — Portfolio Interactivity
+   Includes: Neural Network Playground & Effects
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,388 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypingEffect();
   initNavbar();
   initScrollReveal();
-  initPersonaSwitcher();
-  initRoiCalculator();
-  initLabTabs();
   initPlayground();
-  initTerminal();
-  initCopyChips();
   initSmoothScroll();
 });
 
-/* ---------- 1. Dynamic Persona / Lens Switcher ---------- */
-const personaData = {
-  all: {
-    phrases: [
-      'Solutions Engineer & AI Specialist',
-      'Technical Pre-Sales Consultant',
-      'MS Data Science (4.0 GPA) · Interspeech Author',
-      'Translating Deep AI into Enterprise Value',
-    ],
-    pitch: 'MS in Data Science <strong>(4.0 GPA)</strong> from Wentworth. <strong>Industry Showcase Award Winner</strong> & published researcher at <strong>Interspeech 2026</strong>. I bridge the gap between high-level client business objectives and deep AI architecture — building high-impact POCs, translating technical complexities for executive buyers, and deploying systems that scale.'
-  },
-  solutions: {
-    phrases: [
-      'Solutions Engineer & Pre-Sales Consultant',
-      'Client Discovery & POC Architecture',
-      'Technical Strategy & Executive Demos',
-      'Translating Complex Tech to Measurable ROI'
-    ],
-    pitch: 'Specialized in <strong>Pre-Sales Engineering & Solution Consulting</strong> for AI-driven SaaS, Cloud Data Platforms, and Predictive Systems. Proven track record driving <strong>88% workflow automation</strong>, scoping enterprise POCs (Amazon collaboration), and translating complex models into closed deals and measurable client ROI.'
-  },
-  technical: {
-    phrases: [
-      'AI/ML Systems Specialist',
-      'Published Researcher @ Interspeech 2026',
-      'Deep Learning & Transformer Architectures',
-      'Star Schema ETL & High-Throughput Pipelines'
-    ],
-    pitch: 'MS in Data Science <strong>(4.0 GPA)</strong>. Co-authored peer-reviewed research accepted at <strong>INTERSPEECH 2026</strong> on multi-terabyte biosignal sequence modeling. Architect of novel backward-attention mechanisms for GPT-2, LLM embedding pipelines, and production star-schema warehouses.'
-  }
-};
-
-let currentPersona = 'all';
-
-function initPersonaSwitcher() {
-  const tabs = document.querySelectorAll('.persona-tab');
-  const heroPitch = document.getElementById('heroPitchText');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const target = tab.getAttribute('data-target');
-      currentPersona = target;
-      document.body.setAttribute('data-persona', target);
-
-      // Update Pitch
-      if (heroPitch && personaData[target]) {
-        heroPitch.innerHTML = personaData[target].pitch;
-      }
-
-      // Filter projects & timeline items
-      filterCardsByPersona(target);
-
-      // Restart typing effect with new phrases
-      restartTyping();
-    });
-  });
-}
-
-function filterCardsByPersona(persona) {
-  const filterableItems = document.querySelectorAll('[data-category]');
-  filterableItems.forEach(item => {
-    const cats = item.getAttribute('data-category').split(' ');
-    if (persona === 'all' || cats.includes(persona)) {
-      item.style.display = '';
-      item.style.opacity = '1';
-    } else {
-      item.style.display = 'none';
-      item.style.opacity = '0';
-    }
-  });
-}
-
-/* ---------- 2. Typing Effect ---------- */
-let typingTimeout = null;
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 50;
-
-function initTypingEffect() {
-  typeLoop();
-}
-
-function restartTyping() {
-  if (typingTimeout) clearTimeout(typingTimeout);
-  phraseIndex = 0;
-  charIndex = 0;
-  isDeleting = false;
-  const element = document.getElementById('typed-text');
-  if (element) element.textContent = '';
-  typeLoop();
-}
-
-function typeLoop() {
-  const element = document.getElementById('typed-text');
-  if (!element) return;
-
-  const currentPhrases = personaData[currentPersona].phrases;
-  const currentPhrase = currentPhrases[phraseIndex % currentPhrases.length];
-
-  if (isDeleting) {
-    element.textContent = currentPhrase.substring(0, charIndex - 1);
-    charIndex--;
-    typingSpeed = 25;
-  } else {
-    element.textContent = currentPhrase.substring(0, charIndex + 1);
-    charIndex++;
-    typingSpeed = 50;
-  }
-
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    typingSpeed = 2200;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % currentPhrases.length;
-    typingSpeed = 350;
-  }
-
-  typingTimeout = setTimeout(typeLoop, typingSpeed);
-}
-
-/* ---------- 3. Interactive Solutions ROI Calculator ---------- */
-function initRoiCalculator() {
-  const volSlider = document.getElementById('volSlider');
-  const hoursSlider = document.getElementById('hoursSlider');
-  const rateSlider = document.getElementById('rateSlider');
-
-  const volDisplay = document.getElementById('volDisplay');
-  const hoursDisplay = document.getElementById('hoursDisplay');
-  const rateDisplay = document.getElementById('rateDisplay');
-
-  const annualSavingsEl = document.getElementById('annualSavings');
-  const hoursSavedEl = document.getElementById('hoursSaved');
-  const paybackEl = document.getElementById('paybackPeriod');
-
-  if (!volSlider || !hoursSlider || !rateSlider) return;
-
-  function updateRoi() {
-    const vol = parseInt(volSlider.value, 10);
-    const hoursPerWeek = parseInt(hoursSlider.value, 10);
-    const hourlyRate = parseInt(rateSlider.value, 10);
-
-    volDisplay.textContent = `${vol.toLocaleString()} tx/day`;
-    hoursDisplay.textContent = `${hoursPerWeek} hrs/wk`;
-    rateDisplay.textContent = `$${hourlyRate} / hr`;
-
-    // Benchmark based on Annan's 88% reduction in manual effort:
-    const annualHours = hoursPerWeek * 52;
-    const hoursSaved = Math.round(annualHours * 0.88);
-    const dollarSavings = Math.round(hoursSaved * hourlyRate);
-
-    // Payback calculation (assuming typical $20K POC implementation fee)
-    const monthlySavings = dollarSavings / 12;
-    const paybackMonths = monthlySavings > 0 ? (20000 / monthlySavings).toFixed(1) : '—';
-
-    annualSavingsEl.textContent = `$${dollarSavings.toLocaleString()}`;
-    hoursSavedEl.textContent = `${hoursSaved.toLocaleString()} hrs`;
-    paybackEl.textContent = paybackMonths < 1 ? '< 1 Month' : `${paybackMonths} Months`;
-  }
-
-  volSlider.addEventListener('input', updateRoi);
-  hoursSlider.addEventListener('input', updateRoi);
-  rateSlider.addEventListener('input', updateRoi);
-
-  updateRoi();
-}
-
-/* ---------- 4. Interactive Lab Tabs ---------- */
-function initLabTabs() {
-  const tabRoi = document.getElementById('tabRoiBtn');
-  const tabNN = document.getElementById('tabNNBtn');
-  const roiPane = document.getElementById('roiPane');
-  const nnPane = document.getElementById('nnPane');
-
-  if (!tabRoi || !tabNN) return;
-
-  tabRoi.addEventListener('click', () => {
-    tabRoi.classList.add('active');
-    tabNN.classList.remove('active');
-    roiPane.classList.add('active');
-    nnPane.classList.remove('active');
-  });
-
-  tabNN.addEventListener('click', () => {
-    tabNN.classList.add('active');
-    tabRoi.classList.remove('active');
-    nnPane.classList.add('active');
-    roiPane.classList.remove('active');
-    window.dispatchEvent(new Event('resize'));
-  });
-}
-
-/* ---------- 5. Interactive Terminal (CLI) ---------- */
-function initTerminal() {
-  const modal = document.getElementById('terminalModal');
-  const openBtn = document.getElementById('terminalToggleBtn');
-  const closeBtn = document.getElementById('closeTerminal');
-  const input = document.getElementById('terminalInput');
-  const output = document.getElementById('terminalOutput');
-  const quickChips = document.querySelectorAll('.t-chip');
-
-  if (!modal || !input || !output) return;
-
-  const openTerminal = () => {
-    modal.classList.add('open');
-    input.focus();
-  };
-
-  const closeTerminal = () => {
-    modal.classList.remove('open');
-  };
-
-  if (openBtn) openBtn.addEventListener('click', openTerminal);
-  if (closeBtn) closeBtn.addEventListener('click', closeTerminal);
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeTerminal();
-  });
-
-  // Global Shortcut: Ctrl + ` or Cmd + K
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && (e.key === '`' || e.key === 'k')) {
-      e.preventDefault();
-      if (modal.classList.contains('open')) closeTerminal();
-      else openTerminal();
-    }
-  });
-
-  const commands = {
-    help: () => `
-      <div class="t-line">Available commands:</div>
-      <div class="t-line">  <span class="t-highlight">roles</span>        - View target career roles</div>
-      <div class="t-line">  <span class="t-highlight">metrics</span>      - Key career & project performance benchmarks</div>
-      <div class="t-line">  <span class="t-highlight">experience</span>   - Summary of professional positions</div>
-      <div class="t-line">  <span class="t-highlight">skills</span>       - List core technical & solution skills</div>
-      <div class="t-line">  <span class="t-highlight">projects</span>     - Highlighted production projects & POCs</div>
-      <div class="t-line">  <span class="t-highlight">contact</span>      - Get direct contact channels</div>
-      <div class="t-line">  <span class="t-highlight">resume</span>       - Open Annan's PDF Resume</div>
-      <div class="t-line">  <span class="t-highlight">clear</span>        - Clear terminal output</div>
-    `,
-    roles: () => `
-      <div class="t-line"><span class="t-highlight">Target Positions:</span></div>
-      <div class="t-line">  • Solutions Engineer / Pre-Sales Engineer (AI / SaaS / Cloud Data)</div>
-      <div class="t-line">  • Technical Solutions Consultant / Forward Deployed Engineer</div>
-      <div class="t-line">  • AI/ML Specialist / Machine Learning Engineer</div>
-      <div class="t-line">  • Data Scientist / Decision Intelligence Architect</div>
-    `,
-    metrics: () => `
-      <div class="t-line"><span class="t-highlight">Key Quantifiable Impact:</span></div>
-      <div class="t-line">  • <strong>4.0 / 4.0 GPA</strong> - MS Data Science, Wentworth Institute of Technology</div>
-      <div class="t-line">  • <strong>88%</strong> manual overhead reduction via automated Python ETL solutions</div>
-      <div class="t-line">  • <strong>40%</strong> API latency reduction across 15+ REST endpoints</div>
-      <div class="t-line">  • <strong>60%</strong> database query acceleration via Redis caching & Celery</div>
-      <div class="t-line">  • <strong>47,847</strong> companies modeled with 0.74 ROC-AUC & 85.3% Top-10% precision</div>
-      <div class="t-line">  • <strong>Interspeech 2026</strong> - Peer-reviewed author on biosignal sequence modeling</div>
-    `,
-    experience: () => `
-      <div class="t-line"><span class="t-highlight">Work History:</span></div>
-      <div class="t-line">  1. <strong>Research Assistant</strong> (Amazon Collab) - Wentworth (Jan '26 – Mar '26)</div>
-      <div class="t-line">     Multi-TB biosignal workflows, discovery & stakeholder demos.</div>
-      <div class="t-line">  2. <strong>Software Developer Intern</strong> - N & T Software Pvt. Ltd. (Nov '23 – Jul '24)</div>
-      <div class="t-line">     10K+ tx/day ETL, 40% API speedup, 10K+ active users.</div>
-      <div class="t-line">  3. <strong>Full Stack Developer Intern</strong> - Infosense Services (Jan '23 – Jun '23)</div>
-      <div class="t-line">     Redis/Celery optimization, 8 Docker microservices, client analytics.</div>
-    `,
-    skills: () => `
-      <div class="t-line"><span class="t-highlight">Core Competencies:</span></div>
-      <div class="t-line">  • <strong>Solutions:</strong> Pre-Sales, Technical Discovery, POC Architecture, Client Demos</div>
-      <div class="t-line">  • <strong>Platforms:</strong> Snowflake, Databricks, AWS (S3, EC2, Redshift), PostgreSQL, Redis</div>
-      <div class="t-line">  • <strong>AI & ML:</strong> PyTorch, Hugging Face, LLMs, Scikit-Learn, SHAP, UMAP</div>
-      <div class="t-line">  • <strong>Languages:</strong> Python, SQL, Java, JavaScript, R, Bash</div>
-    `,
-    projects: () => `
-      <div class="t-line"><span class="t-highlight">Selected POCs:</span></div>
-      <div class="t-line">  • <strong>VentureFlow AI:</strong> Investment intelligence SaaS (<a href="https://ventureflow-ai.streamlit.app/" target="_blank" style="color:var(--accent-cyan);">Live App</a>)</div>
-      <div class="t-line">  • <strong>SoftSpeech:</strong> Interspeech 2026 publication (<a href="Softspeech_Interspeech_2026-12.pdf" target="_blank" style="color:var(--accent-cyan);">PDF</a>)</div>
-      <div class="t-line">  • <strong>Backward Attention GPT-2:</strong> 40% math reasoning boost with 5% param training</div>
-    `,
-    contact: () => `
-      <div class="t-line"><span class="t-highlight">Get in touch:</span></div>
-      <div class="t-line">  • Email: <span class="t-highlight">annan.shaikh0404@gmail.com</span></div>
-      <div class="t-line">  • LinkedIn: <a href="https://www.linkedin.com/in/annanahmed-shaikh" target="_blank" style="color:var(--accent-cyan);">linkedin.com/in/annanahmed-shaikh</a></div>
-      <div class="t-line">  • Location: Boston, MA (Open to Relocation & Remote)</div>
-    `,
-    resume: () => {
-      window.open('Shaikh_Annanahmed_Resume.pdf', '_blank');
-      return '<div class="t-line">Opening Shaikh_Annanahmed_Resume.pdf in a new tab...</div>';
-    },
-    clear: () => {
-      output.innerHTML = '';
-      return '';
-    }
-  };
-
-  const handleCommand = (cmd) => {
-    const cleanCmd = cmd.trim().toLowerCase();
-    if (!cleanCmd) return;
-
-    const echo = document.createElement('div');
-    echo.className = 't-line';
-    echo.innerHTML = `<span class="t-prompt">annan@portfolio:~$</span> <span class="t-cmd-echo">${cmd}</span>`;
-    output.appendChild(echo);
-
-    if (commands[cleanCmd]) {
-      const res = commands[cleanCmd]();
-      if (res) {
-        const responseEl = document.createElement('div');
-        responseEl.innerHTML = res;
-        output.appendChild(responseEl);
-      }
-    } else {
-      const err = document.createElement('div');
-      err.className = 't-line';
-      err.innerHTML = `Command not recognized: <span style="color:#ef4444;">${cleanCmd}</span>. Type <span class="t-highlight">help</span> for a list of commands.`;
-      output.appendChild(err);
-    }
-
-    output.scrollTop = output.scrollHeight;
-  };
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const val = input.value;
-      input.value = '';
-      handleCommand(val);
-    }
-  });
-
-  quickChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const cmd = chip.getAttribute('data-cmd');
-      handleCommand(cmd);
-      input.focus();
-    });
-  });
-}
-
-/* ---------- 6. Copy to Clipboard Toast ---------- */
-function initCopyChips() {
-  const copyChips = document.querySelectorAll('.copy-chip');
-  const toast = document.getElementById('toast');
-
-  copyChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const text = chip.getAttribute('data-copy');
-      if (!text) return;
-
-      navigator.clipboard.writeText(text).then(() => {
-        if (toast) {
-          toast.textContent = `Copied "${text}" to clipboard!`;
-          toast.classList.add('show');
-          setTimeout(() => toast.classList.remove('show'), 2500);
-        }
-      });
-    });
-  });
-}
-
-/* ---------- 7. Particle Canvas ---------- */
+/* ---------- Subtle Particle Canvas ---------- */
 function initParticleCanvas() {
   const canvas = document.getElementById('particle-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let particles = [];
-  let mouse = { x: null, y: null, radius: 120 };
+  let mouse = { x: null, y: null, radius: 100 };
 
   function resize() {
     canvas.width = canvas.parentElement.offsetWidth;
     canvas.height = canvas.parentElement.offsetHeight;
   }
+
   resize();
   window.addEventListener('resize', resize);
 
@@ -404,6 +33,7 @@ function initParticleCanvas() {
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
   });
+
   canvas.addEventListener('mouseleave', () => {
     mouse.x = null;
     mouse.y = null;
@@ -413,11 +43,12 @@ function initParticleCanvas() {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 1.6 + 0.4;
-      this.speedX = (Math.random() - 0.5) * 0.35;
-      this.speedY = (Math.random() - 0.5) * 0.35;
-      this.opacity = Math.random() * 0.45 + 0.1;
+      this.size = Math.random() * 1.5 + 0.3;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
+      this.opacity = Math.random() * 0.4 + 0.05;
     }
+
     update() {
       this.x += this.speedX;
       this.y += this.speedY;
@@ -428,8 +59,8 @@ function initParticleCanvas() {
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < mouse.radius) {
           const force = (mouse.radius - dist) / mouse.radius;
-          this.x -= dx * force * 0.02;
-          this.y -= dy * force * 0.02;
+          this.x -= dx * force * 0.015;
+          this.y -= dy * force * 0.015;
         }
       }
 
@@ -438,18 +69,21 @@ function initParticleCanvas() {
       if (this.y < 0) this.y = canvas.height;
       if (this.y > canvas.height) this.y = 0;
     }
+
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`;
+      ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
       ctx.fill();
     }
   }
 
   function createParticles() {
-    const count = Math.min(Math.floor((canvas.width * canvas.height) / 11000), 75);
+    const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 80);
     particles = [];
-    for (let i = 0; i < count; i++) particles.push(new Particle());
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
   }
 
   function drawConnections() {
@@ -459,11 +93,11 @@ function initParticleCanvas() {
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 110) {
-          const opacity = ((110 - dist) / 110) * 0.12;
+        if (dist < 100) {
+          const opacity = ((100 - dist) / 100) * 0.08;
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(0, 240, 255, ${opacity})`;
-          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+          ctx.lineWidth = 0.5;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
           ctx.stroke();
@@ -484,16 +118,67 @@ function initParticleCanvas() {
 
   createParticles();
   animate();
+
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(createParticles, 250);
+  });
 }
 
-/* ---------- 8. Navbar Behavior ---------- */
+/* ---------- Typing Effect ---------- */
+function initTypingEffect() {
+  const element = document.getElementById('typed-text');
+  if (!element) return;
+
+  const phrases = [
+    'Solutions Engineer & Pre-Sales Consultant',
+    'AI & Machine Learning Specialist',
+    'MS Data Science (4.0 GPA) · Interspeech Author',
+    'Full Stack Data Science & POC Architecture',
+  ];
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 50;
+
+  function type() {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      element.textContent = currentPhrase.substring(0, charIndex - 1);
+      charIndex--;
+      typingSpeed = 25;
+    } else {
+      element.textContent = currentPhrase.substring(0, charIndex + 1);
+      charIndex++;
+      typingSpeed = 50;
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      typingSpeed = 2200;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typingSpeed = 350;
+    }
+
+    setTimeout(type, typingSpeed);
+  }
+
+  setTimeout(type, 800);
+}
+
+/* ---------- Navbar ---------- */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
 
   window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 40) {
+    if (window.pageYOffset > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
@@ -503,14 +188,19 @@ function initNavbar() {
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
     });
+
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+      });
     });
   }
 }
 
-/* ---------- 9. Scroll Reveal ---------- */
+/* ---------- Scroll Reveal ---------- */
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -519,12 +209,15 @@ function initScrollReveal() {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -30px 0px'
+  });
 
   reveals.forEach(el => observer.observe(el));
 }
 
-/* ---------- 10. Smooth Scroll ---------- */
+/* ---------- Smooth Scroll ---------- */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -537,7 +230,11 @@ function initSmoothScroll() {
   });
 }
 
-/* ---------- 11. Neural Network Playground ---------- */
+/* ============================================
+   NEURAL NETWORK PLAYGROUND
+   A tiny 2-layer neural network that learns
+   a 2D decision boundary in real-time.
+   ============================================ */
 function initPlayground() {
   const canvas = document.getElementById('playground-canvas');
   if (!canvas) return;
@@ -560,7 +257,7 @@ function initPlayground() {
   function resizeCanvas() {
     const rect = canvas.parentElement.getBoundingClientRect();
     canvas.width = rect.width;
-    canvas.height = 380;
+    canvas.height = 400;
     drawScene();
   }
   resizeCanvas();
@@ -590,7 +287,7 @@ function initPlayground() {
     if (dataPoints.length < 2) return;
     if (training) {
       training = false;
-      trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train Network';
+      trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train';
       if (animFrameId) cancelAnimationFrame(animFrameId);
       return;
     }
@@ -602,7 +299,7 @@ function initPlayground() {
     training = true;
     epoch = 0;
     network = createNetwork();
-    trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause Training';
+    trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause';
     trainLoop();
   });
 
@@ -613,7 +310,7 @@ function initPlayground() {
     epoch = 0;
     epochDisplay.textContent = 'Epoch: 0';
     lossDisplay.textContent = 'Loss: —';
-    trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train Network';
+    trainBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train';
     if (animFrameId) cancelAnimationFrame(animFrameId);
     drawScene();
   });
@@ -728,10 +425,11 @@ function initPlayground() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (network) {
-      const res = 5;
+      const resolution = 4;
       const imgData = ctx.createImageData(canvas.width, canvas.height);
-      for (let py = 0; py < canvas.height; py += res) {
-        for (let px = 0; px < canvas.width; px += res) {
+
+      for (let py = 0; py < canvas.height; py += resolution) {
+        for (let px = 0; px < canvas.width; px += resolution) {
           const nx = px / canvas.width;
           const ny = py / canvas.height;
           const { out } = forward(network, nx, ny);
@@ -739,10 +437,10 @@ function initPlayground() {
           const r = Math.round(59 + (249 - 59) * out);
           const g = Math.round(130 + (115 - 130) * out);
           const b = Math.round(246 + (22 - 246) * out);
-          const alpha = 50;
+          const alpha = 40;
 
-          for (let dy = 0; dy < res && py + dy < canvas.height; dy++) {
-            for (let dx = 0; dx < res && px + dx < canvas.width; dx++) {
+          for (let dy = 0; dy < resolution && py + dy < canvas.height; dy++) {
+            for (let dx = 0; dx < resolution && px + dx < canvas.width; dx++) {
               const idx = ((py + dy) * canvas.width + (px + dx)) * 4;
               imgData.data[idx] = r;
               imgData.data[idx + 1] = g;
@@ -753,9 +451,10 @@ function initPlayground() {
         }
       }
       ctx.putImageData(imgData, 0, 0);
+      drawContour(0.5);
     }
 
-    // Grid
+    // Grid lines
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
     ctx.lineWidth = 1;
     for (let i = 0; i < canvas.width; i += 40) {
@@ -765,13 +464,13 @@ function initPlayground() {
       ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
     }
 
-    // Points
+    // Data points
     dataPoints.forEach(p => {
       const px = p.x * canvas.width;
       const py = p.y * canvas.height;
       ctx.beginPath();
       ctx.arc(px, py, 12, 0, Math.PI * 2);
-      ctx.fillStyle = p.label === 0 ? 'rgba(59, 130, 246, 0.2)' : 'rgba(249, 115, 22, 0.2)';
+      ctx.fillStyle = p.label === 0 ? 'rgba(59, 130, 246, 0.15)' : 'rgba(249, 115, 22, 0.15)';
       ctx.fill();
 
       ctx.beginPath();
@@ -784,11 +483,71 @@ function initPlayground() {
     });
 
     if (dataPoints.length === 0 && !network) {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
       ctx.font = '14px "Inter", sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('Click to add data points (Class A or Class B)', canvas.width / 2, canvas.height / 2);
+      ctx.fillText('Click to add data points', canvas.width / 2, canvas.height / 2 - 10);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.font = '12px "Inter", sans-serif';
+      ctx.fillText('Select Class A or B, then click anywhere', canvas.width / 2, canvas.height / 2 + 14);
     }
+  }
+
+  function drawContour(threshold) {
+    const step = 6;
+    ctx.strokeStyle = 'rgba(16, 185, 129, 0.5)';
+    ctx.lineWidth = 1.5;
+
+    for (let py = 0; py < canvas.height - step; py += step) {
+      for (let px = 0; px < canvas.width - step; px += step) {
+        const v00 = forward(network, px / canvas.width, py / canvas.height).out;
+        const v10 = forward(network, (px + step) / canvas.width, py / canvas.height).out;
+        const v01 = forward(network, px / canvas.width, (py + step) / canvas.height).out;
+        const v11 = forward(network, (px + step) / canvas.width, (py + step) / canvas.height).out;
+
+        const lines = marchingSquare(px, py, step, v00, v10, v01, v11, threshold);
+        lines.forEach(([x1, y1, x2, y2]) => {
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        });
+      }
+    }
+  }
+
+  function marchingSquare(x, y, s, v00, v10, v01, v11, t) {
+    const lines = [];
+    const code =
+      (v00 >= t ? 8 : 0) |
+      (v10 >= t ? 4 : 0) |
+      (v11 >= t ? 2 : 0) |
+      (v01 >= t ? 1 : 0);
+
+    const lerp = (a, b, va, vb) => a + (t - va) / (vb - va) * (b - a);
+
+    const top = [lerp(x, x + s, v00, v10), y];
+    const bottom = [lerp(x, x + s, v01, v11), y + s];
+    const left = [x, lerp(y, y + s, v00, v01)];
+    const right = [x + s, lerp(y, y + s, v10, v11)];
+
+    switch (code) {
+      case 1: case 14: lines.push([left[0], left[1], bottom[0], bottom[1]]); break;
+      case 2: case 13: lines.push([bottom[0], bottom[1], right[0], right[1]]); break;
+      case 3: case 12: lines.push([left[0], left[1], right[0], right[1]]); break;
+      case 4: case 11: lines.push([top[0], top[1], right[0], right[1]]); break;
+      case 5:
+        lines.push([left[0], left[1], top[0], top[1]]);
+        lines.push([bottom[0], bottom[1], right[0], right[1]]);
+        break;
+      case 6: case 9: lines.push([top[0], top[1], bottom[0], bottom[1]]); break;
+      case 7: case 8: lines.push([left[0], left[1], top[0], top[1]]); break;
+      case 10:
+        lines.push([left[0], left[1], bottom[0], bottom[1]]);
+        lines.push([top[0], top[1], right[0], right[1]]);
+        break;
+    }
+    return lines;
   }
 
   drawScene();
