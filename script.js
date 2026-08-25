@@ -1,7 +1,7 @@
 /* ============================================
    ANNANAHMED SHAIKH — PORTFOLIO LOGIC
-   70% Core ML & Systems · 30% Tech + Sales
-   Includes: Interactive Lens, Neural Net Playground
+   Machine Learning & Data Analytics Engineer
+   Includes: Particle Canvas, Typing, Neural Net Playground
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,79 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypingEffect();
   initNavbar();
   initScrollReveal();
-  initLensToggle();
   initPlayground();
   initSmoothScroll();
 });
 
-/* ---------- 1. Interactive Lens Toggle (70% ML / 30% Sales) ---------- */
-const lensConfigs = {
-  ml: {
-    phrases: [
-      'Machine Learning & AI Systems Engineer',
-      'Published Researcher @ Interspeech 2026',
-      'Transformer Architectures & Deep Embeddings',
-      'High-Throughput Star Schema Pipelines',
-    ],
-    pitch: `MS in Data Science <strong>(4.0 GPA)</strong> from Wentworth. Published researcher at <strong>Interspeech 2026</strong> & <strong>Industry Showcase Award Winner</strong>.<br>
-    <span class="highlight-bar"><strong>70% Core ML & Systems</strong>: Novel transformer architectures, deep embeddings, high-throughput ETL pipelines, and production inference platforms.</span><br>
-    <span class="highlight-bar"><strong>30% Tech + Sales & Pre-Sales</strong>: Technical discovery, scoping enterprise POCs (Amazon collaboration), client demos, and proving concrete ROI.</span>`
-  },
-  sales: {
-    phrases: [
-      'Solutions Engineer & Pre-Sales Consultant',
-      'Technical Discovery & Enterprise POCs',
-      'Executive Demos & Stakeholder Communication',
-      'Translating Deep AI into Measurable Client ROI',
-    ],
-    pitch: `MS in Data Science <strong>(4.0 GPA)</strong> from Wentworth. <strong>Industry Showcase Award Winner</strong> (Best Live Demo) & Interspeech 2026 author.<br>
-    <span class="highlight-bar"><strong>30% Solutions & Pre-Sales</strong>: Partnering with enterprise clients to scope technical architectures, build client-ready POCs (Amazon collaboration), and demonstrate 88% operational savings.</span><br>
-    <span class="highlight-bar"><strong>70% Deep Engineering Backing</strong>: Backed by rigorous machine learning, distributed systems, and real-time data pipelines.</span>`
-  }
-};
+/* ---------- 1. Typing Effect ---------- */
+const phrases = [
+  'Machine Learning & Data Analytics Engineer',
+  'Published Researcher @ Interspeech 2026',
+  'State-Space Models (Mamba/S5) & Transformers',
+  'MS in Data Science (4.0 GPA) · Class of 2026',
+];
 
-let currentLens = 'ml';
-let typingTimeout = null;
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 let typingSpeed = 50;
-
-function initLensToggle() {
-  const mlBtn = document.getElementById('lensMlBtn');
-  const salesBtn = document.getElementById('lensSalesBtn');
-  const pitchText = document.getElementById('heroPitchText');
-
-  if (!mlBtn || !salesBtn) return;
-
-  mlBtn.addEventListener('click', () => {
-    if (currentLens === 'ml') return;
-    currentLens = 'ml';
-    mlBtn.classList.add('active');
-    salesBtn.classList.remove('active');
-    if (pitchText) pitchText.innerHTML = lensConfigs.ml.pitch;
-    restartTyping();
-  });
-
-  salesBtn.addEventListener('click', () => {
-    if (currentLens === 'sales') return;
-    currentLens = 'sales';
-    salesBtn.classList.add('active');
-    mlBtn.classList.remove('active');
-    if (pitchText) pitchText.innerHTML = lensConfigs.sales.pitch;
-    restartTyping();
-  });
-}
-
-function restartTyping() {
-  if (typingTimeout) clearTimeout(typingTimeout);
-  phraseIndex = 0;
-  charIndex = 0;
-  isDeleting = false;
-  const element = document.getElementById('typed-text');
-  if (element) element.textContent = '';
-  typeLoop();
-}
 
 function initTypingEffect() {
   typeLoop();
@@ -91,8 +34,7 @@ function typeLoop() {
   const element = document.getElementById('typed-text');
   if (!element) return;
 
-  const currentPhrases = lensConfigs[currentLens].phrases;
-  const currentPhrase = currentPhrases[phraseIndex % currentPhrases.length];
+  const currentPhrase = phrases[phraseIndex % phrases.length];
 
   if (isDeleting) {
     element.textContent = currentPhrase.substring(0, charIndex - 1);
@@ -109,11 +51,11 @@ function typeLoop() {
     isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % currentPhrases.length;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
     typingSpeed = 350;
   }
 
-  typingTimeout = setTimeout(typeLoop, typingSpeed);
+  setTimeout(typeLoop, typingSpeed);
 }
 
 /* ---------- 2. Particle Canvas ---------- */
