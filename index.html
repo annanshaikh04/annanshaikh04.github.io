@@ -3,33 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Annanahmed Shaikh — Data Scientist & ML Engineer</title>
-  <meta name="description" content="Annanahmed Shaikh — Data Scientist & ML Engineer. MS Data Science (4.0 GPA), published researcher at Interspeech 2026. Building ML systems that ship.">
+  <title>Annanahmed Shaikh — Solutions Engineer & AI/ML Specialist</title>
+  <meta name="description" content="Annanahmed Shaikh — Solutions Engineer, Pre-Sales Consultant & AI/ML Specialist. MS Data Science (4.0 GPA), Published Researcher at Interspeech 2026, Industry Showcase Award Winner.">
   <meta name="author" content="Annanahmed Shaikh">
-  <meta name="keywords" content="data scientist, machine learning engineer, deep learning, NLP, portfolio, Interspeech, Python, AI, Annanahmed Shaikh">
+  <meta name="keywords" content="Solutions Engineer, Pre-Sales Engineer, Solutions Consultant, Data Scientist, Machine Learning Engineer, AI Architect, Interspeech, Annanahmed Shaikh">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
-<body>
+<body data-persona="all">
+
+  <!-- ========== TOP TOAST NOTIFICATION ========== -->
+  <div id="toast" class="toast">Copied to clipboard!</div>
 
   <!-- ========== NAVIGATION ========== -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#hero" class="nav-logo">annan<span class="logo-dot">.</span></a>
+      <a href="#hero" class="nav-logo">
+        <span class="logo-terminal-prompt">&gt;</span>annan<span class="logo-dot">.</span>
+      </a>
+
+      <!-- Lens / Persona Switcher in Nav -->
+      <div class="persona-switch-wrapper">
+        <span class="persona-label">View Lens:</span>
+        <div class="persona-tabs">
+          <button class="persona-tab active" data-target="all" title="Full Stack View">⚡ All-Rounder</button>
+          <button class="persona-tab" data-target="solutions" title="Pre-Sales & Technical Solutions">💼 Solutions & Pre-Sales</button>
+          <button class="persona-tab" data-target="technical" title="Deep ML & Systems">🔬 AI & Data Science</button>
+        </div>
+      </div>
+
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
-        <a href="#projects">Work</a>
         <a href="#experience">Experience</a>
-        <a href="#playground">Playground</a>
+        <a href="#projects">Work & POCs</a>
+        <a href="#interactive-lab">Interactive Lab</a>
+        <a href="#skills">Capabilities</a>
         <a href="#writing">Writing</a>
         <a href="Shaikh_Annanahmed_Resume.pdf" target="_blank" class="nav-resume-btn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Resume
         </a>
       </div>
+
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span>
         <span></span>
@@ -43,230 +61,395 @@
     <canvas id="particle-canvas"></canvas>
     <div class="container">
       <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="status-dot"></span>
-          Open to full-time opportunities
+        
+        <!-- Live Status Pill & Terminal Trigger -->
+        <div class="hero-top-meta">
+          <div class="hero-eyebrow">
+            <span class="status-dot"></span>
+            Open to full-time roles: <strong>Solutions Engineer · Pre-Sales Consultant · AI/ML Specialist · Data Scientist</strong>
+          </div>
+          <button id="terminalToggleBtn" class="terminal-quick-btn" title="Open Interactive Terminal">
+            <code>[~] terminal</code>
+          </button>
         </div>
+
         <h1 class="hero-name">Annanahmed Shaikh</h1>
+        
         <p class="hero-role">
-          <span id="typed-text"></span><span class="cursor">|</span>
+          <span class="role-prefix">&gt;</span> <span id="typed-text"></span><span class="cursor">|</span>
         </p>
-        <p class="hero-pitch">
-          MS Data Science <strong>(4.0 GPA)</strong> from Wentworth. Published at <strong>Interspeech 2026</strong>.
-          I build ML systems that ship — from transformer architectures to production prediction platforms.
+
+        <!-- Dynamic Pitch Tailored by Lens -->
+        <p class="hero-pitch" id="heroPitchText">
+          MS in Data Science <strong>(4.0 GPA)</strong> from Wentworth. <strong>Industry Showcase Award Winner</strong> & published researcher at <strong>Interspeech 2026</strong>. 
+          I bridge the gap between high-level client business objectives and deep AI architecture — building high-impact POCs, translating technical complexities for executive buyers, and deploying systems that scale.
         </p>
+
+        <!-- Proof Metrics Grid -->
         <div class="hero-proof">
           <div class="proof-item">
-            <span class="proof-value">4.0</span>
-            <span class="proof-label">GPA</span>
+            <span class="proof-value">4.0 / 4.0</span>
+            <span class="proof-label">MS Data Science GPA</span>
           </div>
           <div class="proof-divider"></div>
           <div class="proof-item">
-            <span class="proof-value">Interspeech</span>
-            <span class="proof-label">Published</span>
+            <span class="proof-value">88%</span>
+            <span class="proof-label">Workflow Automation</span>
           </div>
           <div class="proof-divider"></div>
           <div class="proof-item">
-            <span class="proof-value">47K+</span>
-            <span class="proof-label">Startups Analyzed</span>
+            <span class="proof-value">Interspeech '26</span>
+            <span class="proof-label">Published Author</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-value">10K+ Users</span>
+            <span class="proof-label">SaaS & API Platforms</span>
           </div>
         </div>
+
+        <!-- Action CTAs -->
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            See my work
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Explore Projects & Demos
           </a>
-          <a href="#contact" class="btn-ghost">Let's talk</a>
+          <a href="#interactive-lab" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Live Interactive Lab
+          </a>
+          <a href="#contact" class="btn-ghost">Schedule a Call</a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ========== ABOUT ========== -->
+  <!-- ========== INTERACTIVE TERMINAL DRAWER / MODAL ========== -->
+  <div id="terminalModal" class="terminal-modal">
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <div class="terminal-buttons">
+          <span class="t-btn t-close" id="closeTerminal"></span>
+          <span class="t-btn t-min"></span>
+          <span class="t-btn t-max"></span>
+        </div>
+        <div class="terminal-title">annan@portfolio: ~ (interactive shell)</div>
+        <div class="terminal-actions-right">
+          <span class="terminal-badge">Type 'help'</span>
+        </div>
+      </div>
+      <div class="terminal-body" id="terminalOutput">
+        <div class="t-line greeting">Welcome to Annanahmed Shaikh's interactive CLI. Type <span class="t-highlight">help</span> to view commands, or click quick actions below.</div>
+      </div>
+      <div class="terminal-quick-actions">
+        <button class="t-chip" data-cmd="roles">roles</button>
+        <button class="t-chip" data-cmd="metrics">metrics</button>
+        <button class="t-chip" data-cmd="experience">experience</button>
+        <button class="t-chip" data-cmd="skills">skills</button>
+        <button class="t-chip" data-cmd="contact">contact</button>
+        <button class="t-chip" data-cmd="clear">clear</button>
+      </div>
+      <div class="terminal-input-row">
+        <span class="t-prompt">annan@portfolio:~$</span>
+        <input type="text" id="terminalInput" placeholder="Type a command (e.g. roles, skills, demo, clear)..." autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ABOUT & STORY ========== -->
   <section id="about">
     <div class="container">
-      <div class="section-label reveal">About</div>
+      <div class="section-label reveal">The Story</div>
+      
       <div class="about-layout">
         <div class="about-main reveal">
-          <h2 class="about-headline">I came to Boston to get really good at making machines learn.</h2>
+          <h2 class="about-headline">
+            Where deep engineering execution meets customer-facing strategy.
+          </h2>
+          
           <div class="about-body">
-            <p>Two years later, I graduated top of my class with a <strong>4.0 GPA</strong>, co-authored a paper accepted at <strong>Interspeech 2026</strong> — one of the biggest speech conferences in the world — and built a startup prediction platform that processes 47,000+ companies with explainable AI.</p>
-            <p>I'm not just someone who fine-tunes models in notebooks. I design schemas, build ETL pipelines, deploy Streamlit apps, write research papers, and architect full data systems. The kind of person who reads the documentation <em>and</em> the source code.</p>
+            <p>
+              I bridge the gap between <strong>complex data science/AI architectures</strong> and <strong>high-stakes client business value</strong>. 
+              With a background spanning <strong>Full-Stack Development, Big Data Pipelines, and Advanced Machine Learning</strong>, I don't just explain how technical products work — I build working POCs, lead technical discovery, and prove ROI to technical and non-technical stakeholders alike.
+            </p>
+            <p>
+              During my Master's at Wentworth (graduating with a <strong>perfect 4.0 GPA</strong>), I collaborated with <strong>Amazon research teams</strong> on multi-terabyte biosignal workflows, won the <strong>2026 Industry Showcase Award</strong> for best live technical demonstration to an executive jury, and co-authored a published paper at <strong>Interspeech 2026</strong>.
+            </p>
+            <p>
+              Whether partnering with enterprise sales teams to scope architectures, designing live client demos, or architecting production LLM platforms with sub-second latency — I thrive in fast-paced environments where technical fluency directly drives business growth.
+            </p>
           </div>
+
+          <!-- Awards & Accolades Banner -->
+          <div class="accolades-strip reveal">
+            <div class="accolade-card">
+              <div class="accolade-icon">🏆</div>
+              <div class="accolade-text">
+                <strong>Industry Showcase Award Winner (2026)</strong>
+                <span>Recognized by industry leaders for top live ML demonstration & business value translation.</span>
+              </div>
+            </div>
+            <div class="accolade-card">
+              <div class="accolade-icon">📜</div>
+              <div class="accolade-text">
+                <strong>Published Researcher @ INTERSPEECH 2026</strong>
+                <span>Peer-reviewed author at the premier speech & signal processing conference.</span>
+              </div>
+            </div>
+          </div>
+
         </div>
+
         <div class="about-sidebar">
           <div class="about-card reveal">
-            <div class="about-card-label">Currently</div>
-            <div class="about-card-value">Looking for DS / ML roles</div>
+            <div class="about-card-label">Target Roles</div>
+            <div class="about-card-value">Solutions Engineer · Pre-Sales Consultant · AI/ML Specialist · Data Scientist</div>
+          </div>
+          <div class="about-card reveal">
+            <div class="about-card-label">Client Impact</div>
+            <div class="about-card-value">88% Automation · 40% API Speedup · 10K+ Daily Transactions</div>
           </div>
           <div class="about-card reveal">
             <div class="about-card-label">Education</div>
-            <div class="about-card-value">MS Data Science, Wentworth</div>
-            <div class="about-card-detail">4.0 GPA · Class of 2026</div>
+            <div class="about-card-value">MS Data Science (4.0 GPA)</div>
+            <div class="about-card-detail">Wentworth Institute of Tech · 2024–2026</div>
+            <div class="about-card-detail" style="margin-top:6px;">BE Computer Science · 2019–2023</div>
           </div>
           <div class="about-card reveal">
-            <div class="about-card-label">Location</div>
-            <div class="about-card-value">Boston, MA</div>
-          </div>
-          <div class="about-card reveal">
-            <div class="about-card-label">Right now I'm exploring</div>
-            <div class="about-card-value">LLM fine-tuning & RAG pipelines</div>
+            <div class="about-card-label">Location & Mobility</div>
+            <div class="about-card-value">Boston, MA · Open to Remote & Relocation</div>
           </div>
         </div>
       </div>
 
-      <!-- Skills — compact, no emojis -->
-      <div class="skills-section reveal">
-        <h3 class="skills-heading">What I work with</h3>
-        <div class="skills-row">
-          <div class="skill-group">
-            <span class="skill-group-name">Languages</span>
-            <div class="skill-pills">
-              <span class="pill">Python</span>
-              <span class="pill">R</span>
-              <span class="pill">SQL</span>
-              <span class="pill">JavaScript</span>
-            </div>
+    </div>
+  </section>
+
+  <!-- ========== DETAILED PROFESSIONAL EXPERIENCE ========== -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-label reveal">Career History</div>
+      <h2 class="section-heading reveal">Professional Experience</h2>
+
+      <div class="timeline">
+
+        <!-- 1. Wentworth / Amazon Collaboration -->
+        <div class="tl-item reveal" data-category="solutions technical">
+          <div class="tl-marker">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 12 3 12 0v-5"/></svg>
           </div>
-          <div class="skill-group">
-            <span class="skill-group-name">ML & AI</span>
-            <div class="skill-pills">
-              <span class="pill">PyTorch</span>
-              <span class="pill">Scikit-Learn</span>
-              <span class="pill">HuggingFace</span>
-              <span class="pill">SHAP</span>
-              <span class="pill">UMAP</span>
-              <span class="pill">HDBSCAN</span>
+          <div class="tl-content">
+            <div class="tl-header-row">
+              <div>
+                <span class="tl-date">Jan 2026 — Mar 2026 · Boston, MA</span>
+                <h3 class="tl-title">Research Assistant — Technical Solutions & Stakeholder Communication</h3>
+                <p class="tl-org">Wentworth Institute of Technology <em>(in collaboration with Amazon & Clinical Faculty)</em></p>
+              </div>
+              <span class="tl-tag badge-amazon">Enterprise Collab</span>
             </div>
-          </div>
-          <div class="skill-group">
-            <span class="skill-group-name">Data & Infra</span>
-            <div class="skill-pills">
-              <span class="pill">MySQL</span>
-              <span class="pill">pandas</span>
-              <span class="pill">ETL</span>
-              <span class="pill">Star Schema</span>
-              <span class="pill">NumPy</span>
-              <span class="pill">Streamlit</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <span class="skill-group-name">Viz & Tools</span>
-            <div class="skill-pills">
-              <span class="pill">Tableau</span>
-              <span class="pill">Plotly</span>
-              <span class="pill">Matplotlib</span>
-              <span class="pill">Git</span>
-              <span class="pill">CUDA</span>
-              <span class="pill">Jupyter</span>
+            <ul class="tl-details">
+              <li><strong>Led technical discovery and requirements gathering</strong> with cross-functional teams (Amazon, clinical faculty), translating business, clinical, and research needs into scalable production solutions.</li>
+              <li><strong>Architected and demonstrated scalable data pipeline solutions</strong> processing multi-terabyte biosignal datasets, enabling executive stakeholder validation and accelerating adoption for INTERSPEECH 2026 deployment.</li>
+              <li><strong>Engineered automated feature extraction workflows</strong> using NumPy and SciPy, reducing manual data processing overhead by <strong>15%</strong> and enabling research teams to iterate faster on downstream model insights.</li>
+              <li><strong>Delivered technical presentations and POC walkthroughs</strong> to interdisciplinary stakeholders, establishing clear milestones and technical feasibilities.</li>
+            </ul>
+            <div class="tl-skills-tags">
+              <span>Technical Discovery</span><span>Stakeholder Management</span><span>Biosignal Analytics</span><span>NumPy/SciPy</span><span>POC Demos</span>
             </div>
           </div>
         </div>
+
+        <!-- 2. N & T Software Pvt. Ltd. -->
+        <div class="tl-item reveal" data-category="solutions technical">
+          <div class="tl-marker">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-header-row">
+              <div>
+                <span class="tl-date">Nov 2023 — Jul 2024 · Ahmedabad, India</span>
+                <h3 class="tl-title">Software Developer Intern — Customer Solutions & Business Analytics</h3>
+                <p class="tl-org">N & T Software Pvt. Ltd.</p>
+              </div>
+              <span class="tl-tag badge-saas">SaaS Analytics</span>
+            </div>
+            <ul class="tl-details">
+              <li><strong>Engineered end-to-end automated ETL pipelines</strong> using Python (pandas, APScheduler) processing <strong>10,000+ daily transactions</strong>, eliminating manual operational bottlenecks by <strong>88%</strong>.</li>
+              <li><strong>Optimized 15+ REST APIs</strong>, decreasing average latency by <strong>40%</strong> and significantly improving responsiveness for client-facing analytics dashboards serving <strong>10,000+ active users</strong>.</li>
+              <li><strong>Redesigned MongoDB and PostgreSQL data models</strong> with strategic multi-key indexing and normalization, delivering a <strong>35% query performance boost</strong> for real-time executive reporting.</li>
+              <li>Collaborated directly with client account managers to diagnose integration issues, formulate technical solutions, and provide post-deployment support.</li>
+            </ul>
+            <div class="tl-skills-tags">
+              <span>Python</span><span>PostgreSQL</span><span>MongoDB</span><span>REST API Optimization</span><span>APScheduler</span><span>ETL Automation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Infosense Services -->
+        <div class="tl-item reveal" data-category="technical solutions">
+          <div class="tl-marker">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-header-row">
+              <div>
+                <span class="tl-date">Jan 2023 — Jun 2023 · Gandhinagar, India</span>
+                <h3 class="tl-title">Full Stack Developer Intern — Solutions Development & Client Support</h3>
+                <p class="tl-org">Infosense Services</p>
+              </div>
+              <span class="tl-tag badge-cloud">Distributed Systems</span>
+            </div>
+            <ul class="tl-details">
+              <li><strong>Built real-time event processing architecture</strong> analyzing <strong>5,000+ daily events</strong> using Python, Java, and PostgreSQL, supporting <strong>500+ concurrent customer sessions</strong> with 99.9% uptime.</li>
+              <li><strong>Slashed database query latency by 60%</strong> by architecting Redis caching layers and Celery asynchronous task queues, enabling sub-second response times on client reporting interfaces.</li>
+              <li><strong>Containerized 8 core microservices</strong> using Docker and configured automated CI/CD pipelines, cutting deployment downtime by 50%.</li>
+            </ul>
+            <div class="tl-skills-tags">
+              <span>Redis Caching</span><span>Celery Queues</span><span>Docker</span><span>CI/CD</span><span>Java / Python</span><span>Client Support</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Education -->
+        <div class="tl-item reveal">
+          <div class="tl-marker">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="tl-content">
+            <div class="tl-header-row">
+              <div>
+                <span class="tl-date">Sept 2024 — Apr 2026 · Boston, MA</span>
+                <h3 class="tl-title">Master of Science in Data Science — Perfect 4.0 / 4.0 GPA</h3>
+                <p class="tl-org">Wentworth Institute of Technology</p>
+              </div>
+              <span class="tl-tag badge-gpa">GPA 4.0</span>
+            </div>
+            <ul class="tl-details">
+              <li><strong>Top of Graduating Class</strong> with 4.0/4.0 GPA across Advanced Machine Learning, Deep Learning, Applied Statistics, Data Engineering & Warehouse Design.</li>
+              <li><strong>Capstone Project</strong>: VentureFlow AI — Full investment decision intelligence platform with SHAP explainability and live Streamlit deployment.</li>
+              <li><strong>Silver Oak College of Engg. & Tech.</strong>: Bachelor of Engineering in Computer Science (2019 – 2023).</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ========== FEATURED PROJECTS ========== -->
+  <!-- ========== FEATURED PROJECTS & POCs ========== -->
   <section id="projects">
     <div class="container">
-      <div class="section-label reveal">Selected Work</div>
-      <h2 class="section-heading reveal">Projects I'm proud of</h2>
+      <div class="section-label reveal">Portfolio & Proof of Concept</div>
+      <h2 class="section-heading reveal">Featured Solutions & Projects</h2>
 
-      <!-- Featured Project 1: VentureFlow AI -->
-      <div class="featured-project reveal">
+      <!-- Project 1: VentureFlow AI -->
+      <div class="featured-project reveal" data-category="solutions technical">
         <div class="fp-header">
           <div class="fp-meta">
-            <span class="fp-tag">Capstone · Production App</span>
+            <span class="fp-tag">Capstone & Live SaaS POC</span>
             <span class="fp-tag live">
               <span class="status-dot"></span>
-              Live
+              Live Demo Online
             </span>
           </div>
           <div class="fp-links">
-            <a href="https://ventureflow-ai.streamlit.app/" target="_blank" class="fp-link" title="Live Demo">
+            <a href="https://ventureflow-ai.streamlit.app/" target="_blank" class="fp-link" title="Open Live Streamlit App">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
-            <a href="https://github.com/annanshaikh04/Data-6950_Capstone_Project" target="_blank" class="fp-link" title="GitHub">
+            <a href="https://github.com/annanshaikh04/Data-6950_Capstone_Project" target="_blank" class="fp-link" title="View Source on GitHub">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             </a>
           </div>
         </div>
-        <h3 class="fp-title">VentureFlow AI</h3>
-        <p class="fp-subtitle">Investment Intelligence Platform</p>
+
+        <h3 class="fp-title">VentureFlow AI — Investment Decision Intelligence Platform</h3>
+        <p class="fp-subtitle">Full-Stack Pre-Sales POC & Explainable ML Platform</p>
+
         <div class="fp-story">
           <div class="fp-block">
-            <span class="fp-block-label">The Problem</span>
-            <p>VCs evaluate thousands of startups manually. Can we predict which ones will succeed using data and explainable ML?</p>
+            <span class="fp-block-label">💼 Business Problem & Discovery</span>
+            <p>Venture Capital firms evaluate 10,000+ pitch decks annually, spending hundreds of manual hours with high false-positive rates and zero model explainability.</p>
           </div>
           <div class="fp-block">
-            <span class="fp-block-label">What I Built</span>
-            <p>A production-ready decision support system using dual-encoder LLM embeddings (MPNet + MiniLM), Random Forest classification, SHAP explainability, and a SQL star-schema data warehouse. Deployed live on Streamlit Cloud.</p>
+            <span class="fp-block-label">🛠️ Solution & Architecture</span>
+            <p>Built a production-grade dual-encoder LLM embedding pipeline (MPNet + MiniLM) with Random Forest & XGBoost, backed by a star-schema data warehouse and SHAP/LIME explainability for investment committee buy-in.</p>
           </div>
         </div>
+
         <div class="fp-results">
           <div class="fp-result">
-            <span class="fp-result-value">0.71+</span>
-            <span class="fp-result-label">ROC-AUC</span>
+            <span class="fp-result-value">0.74 / 0.98</span>
+            <span class="fp-result-label">ROC-AUC / PR-AUC</span>
           </div>
           <div class="fp-result">
-            <span class="fp-result-value">47K+</span>
-            <span class="fp-result-label">Startups Analyzed</span>
+            <span class="fp-result-value">85.3%</span>
+            <span class="fp-result-label">Precision @ Top 10%</span>
           </div>
           <div class="fp-result">
-            <span class="fp-result-value">95%+</span>
-            <span class="fp-result-label">Precision@200</span>
+            <span class="fp-result-value">47,847</span>
+            <span class="fp-result-label">Startups Modeled</span>
           </div>
         </div>
+
         <div class="fp-tech">
-          <span>Python</span><span>Streamlit</span><span>Random Forest</span><span>LLM Embeddings</span><span>SHAP</span><span>SQL Star Schema</span><span>PCA</span>
+          <span>Python</span><span>Streamlit Cloud</span><span>LLM Embeddings</span><span>SHAP Explainability</span><span>Star Schema SQL</span><span>Scikit-Learn</span>
         </div>
       </div>
 
-      <!-- Featured Project 2: SoftSpeech -->
-      <div class="featured-project reveal">
+      <!-- Project 2: SoftSpeech -->
+      <div class="featured-project reveal" data-category="technical">
         <div class="fp-header">
           <div class="fp-meta">
             <span class="fp-tag">Research · Interspeech 2026</span>
-            <span class="fp-tag published">Published</span>
+            <span class="fp-tag published">Peer-Reviewed Publication</span>
           </div>
           <div class="fp-links">
-            <a href="Softspeech_Interspeech_2026-12.pdf" target="_blank" class="fp-link" title="Read Paper">
+            <a href="Softspeech_Interspeech_2026-12.pdf" target="_blank" class="fp-link" title="Read Paper PDF">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             </a>
           </div>
         </div>
-        <h3 class="fp-title">SoftSpeech</h3>
-        <p class="fp-subtitle">Speech Enhancement Research</p>
+
+        <h3 class="fp-title">SoftSpeech — Biosignal Sequence Modeling & Speech Enhancement</h3>
+        <p class="fp-subtitle">Accepted at INTERSPEECH 2026 (Premier Speech Processing Venue)</p>
+
         <div class="fp-story">
           <div class="fp-block">
-            <span class="fp-block-label">The Problem</span>
-            <p>Current speech enhancement models struggle with preserving naturalness while removing noise. Can we do better?</p>
+            <span class="fp-block-label">🔬 Scientific Challenge</span>
+            <p>Non-invasive sensor signals for speech processing suffer from severe noise and signal degradation. Traditional signal filtering removes vital acoustic components.</p>
           </div>
           <div class="fp-block">
-            <span class="fp-block-label">What I Did</span>
-            <p>Co-authored a research paper during a 3-month internship, applying deep learning techniques to push the boundaries of speech technology. Accepted at Interspeech 2026 — one of the premier conferences in speech and language processing.</p>
+            <span class="fp-block-label">💡 Technical Approach</span>
+            <p>Engineered a deep neural sequence model that transforms multi-channel raw sensor feeds into robust speech representations with state-of-the-art clarity and intelligibility.</p>
           </div>
         </div>
+
         <div class="fp-results">
           <div class="fp-result">
             <span class="fp-result-value">Interspeech</span>
-            <span class="fp-result-label">Top-Tier Venue</span>
+            <span class="fp-result-label">Top 1% Venue</span>
           </div>
           <div class="fp-result">
-            <span class="fp-result-value">3 mo</span>
+            <span class="fp-result-value">3 Months</span>
             <span class="fp-result-label">Research Sprint</span>
           </div>
+          <div class="fp-result">
+            <span class="fp-result-value">Multi-TB</span>
+            <span class="fp-result-label">Sensor Pipeline</span>
+          </div>
         </div>
+
         <div class="fp-tech">
-          <span>Deep Learning</span><span>Speech Processing</span><span>PyTorch</span><span>Research</span>
+          <span>PyTorch</span><span>Sequence Modeling</span><span>Signal Processing</span><span>CUDA</span><span>Scientific Writing</span>
         </div>
       </div>
 
-      <!-- Featured Project 3: Backward Attention GPT-2 -->
-      <div class="featured-project reveal">
+      <!-- Project 3: Backward Attention GPT-2 -->
+      <div class="featured-project reveal" data-category="technical solutions">
         <div class="fp-header">
           <div class="fp-meta">
-            <span class="fp-tag">Deep Learning Research</span>
+            <span class="fp-tag">Cost-Effective AI Innovation</span>
           </div>
           <div class="fp-links">
             <a href="https://github.com/annanshaikh04/DATA-6300-Major-Project" target="_blank" class="fp-link" title="GitHub">
@@ -274,113 +457,138 @@
             </a>
           </div>
         </div>
+
         <h3 class="fp-title">Backward Attention Fine-Tuning for GPT-2</h3>
-        <p class="fp-subtitle">Novel Transformer Architecture</p>
+        <p class="fp-subtitle">Modular Architecture Boosting Math Accuracy by 40% Training Only 5% of Parameters</p>
+
         <div class="fp-story">
           <div class="fp-block">
-            <span class="fp-block-label">The Idea</span>
-            <p>What if we could enhance GPT-2's math reasoning by adding a backward attention head — without retraining the entire model?</p>
+            <span class="fp-block-label">🎯 Business & Compute Tradeoff</span>
+            <p>Full fine-tuning of foundational LLMs is prohibitively expensive for enterprise customers with limited GPU budgets and high retraining overhead.</p>
           </div>
           <div class="fp-block">
-            <span class="fp-block-label">What I Built</span>
-            <p>A novel fine-tuning approach that introduces a backward attention head atop frozen GPT-2. Only trains the new attention layer — computationally efficient, modular, and shows that architectural additions can beat full fine-tuning for specific tasks.</p>
+            <span class="fp-block-label">⚡ Architectural Innovation</span>
+            <p>Introduced a backward-attention head on top of frozen GPT-2 to reweight tokens via attention over logits. Trained on 10,000+ problems, achieving major accuracy gains at a fraction of compute costs.</p>
           </div>
         </div>
+
+        <div class="fp-results">
+          <div class="fp-result">
+            <span class="fp-result-value">+40%</span>
+            <span class="fp-result-label">Math Accuracy Gain</span>
+          </div>
+          <div class="fp-result">
+            <span class="fp-result-value">95%</span>
+            <span class="fp-result-label">Compute Savings</span>
+          </div>
+          <div class="fp-result">
+            <span class="fp-result-value">-35%</span>
+            <span class="fp-result-label">Multi-Step Error</span>
+          </div>
+        </div>
+
         <div class="fp-tech">
-          <span>PyTorch</span><span>GPT-2</span><span>HuggingFace</span><span>CUDA</span><span>Attention Mechanism</span>
+          <span>PyTorch</span><span>GPT-2</span><span>Hugging Face</span><span>CUDA</span><span>Efficient Fine-Tuning</span>
         </div>
       </div>
 
-      <!-- Other Projects Grid -->
-      <h3 class="other-projects-heading reveal">Other projects</h3>
+      <!-- Additional Projects Grid -->
+      <h3 class="other-projects-heading reveal">More Production Systems & Client Demos</h3>
+      
       <div class="projects-grid">
 
-        <div class="project-card reveal">
+        <!-- Tableau Playbook -->
+        <div class="project-card reveal" data-category="solutions">
+          <div class="pc-header">
+            <svg class="pc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <div style="display:flex;gap:8px;">
+              <a href="https://public.tableau.com/app/profile/annanahmed.shaikh3774/viz/UnvellingStartupSuccessPatternbyAnnanahmedShaikh/Story1" target="_blank" class="pc-link-icon" title="View Tableau Public Viz">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/annanshaikh04/startup-success-tableau" target="_blank" class="pc-link-icon" title="GitHub">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4 class="pc-title">Startup Success Playbook (Tableau Story)</h4>
+          <p class="pc-desc">Self-service BI data story analyzing 50,000+ startups across 750 industries. Designed for C-level investment partners with dynamic filters and geo maps.</p>
+          <div class="pc-tech">
+            <span>Tableau Public</span><span>Data Storytelling</span><span>50K+ Records</span><span>Executive BI</span>
+          </div>
+        </div>
+
+        <!-- Fake News Pipeline -->
+        <div class="project-card reveal" data-category="technical solutions">
           <div class="pc-header">
             <svg class="pc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             <a href="https://github.com/annanshaikh04/DATA_6250_Fake-News-Detection-ML" target="_blank" class="pc-link-icon" title="GitHub">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
-          <h4 class="pc-title">Fake News Detection Pipeline</h4>
-          <p class="pc-desc">End-to-end classification with transformer embeddings, UMAP, HDBSCAN clustering, and 8 rigorous experiments. Gradient Boosting won.</p>
+          <h4 class="pc-title">Trust & Safety AI: Fake News Pipeline</h4>
+          <p class="pc-desc">Sentence Transformers, UMAP dimensionality reduction, and Gradient Boosting with SHAP & LIME for transparent automated content moderation.</p>
           <div class="pc-tech">
-            <span>Transformers</span><span>UMAP</span><span>HDBSCAN</span><span>SHAP</span>
+            <span>Transformers</span><span>UMAP</span><span>SHAP / LIME</span><span>Responsible AI</span>
           </div>
         </div>
 
-        <div class="project-card reveal">
-          <div class="pc-header">
-            <svg class="pc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-            <a href="https://github.com/annanshaikh04/startup-success-prediction-LLM" target="_blank" class="pc-link-icon" title="GitHub">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-          <h4 class="pc-title">Startup Success Prediction — LLM</h4>
-          <p class="pc-desc">Using large language models to analyze and predict startup success through textual analysis and semantic embeddings of company descriptions.</p>
-          <div class="pc-tech">
-            <span>LLM</span><span>NLP</span><span>Python</span><span>Embeddings</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="pc-header">
-            <svg class="pc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-            <div style="display:flex;gap:8px;">
-              <a href="https://public.tableau.com/app/profile/annanahmed.shaikh3774/viz/UnvellingStartupSuccessPatternbyAnnanahmedShaikh/Story1" target="_blank" class="pc-link-icon" title="Tableau">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-              <a href="https://github.com/annanshaikh04/startup-success-tableau" target="_blank" class="pc-link-icon" title="GitHub">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-          </div>
-          <h4 class="pc-title">Startup Success Playbook — Tableau</h4>
-          <p class="pc-desc">Interactive 3-act data story analyzing 50,000+ startups — funding patterns, industry insights, and regional ecosystem dynamics.</p>
-          <div class="pc-tech">
-            <span>Tableau</span><span>Data Story</span><span>50K+ Records</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
+        <!-- EV Charging Load Profiling -->
+        <div class="project-card reveal" data-category="solutions technical">
           <div class="pc-header">
             <svg class="pc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             <a href="https://github.com/annanshaikh04/Applied-Stats-EV-Charging-Load-Profiling" target="_blank" class="pc-link-icon" title="GitHub">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
-          <h4 class="pc-title">EV Charging Load Profiling</h4>
-          <p class="pc-desc">Per-station, per-hour load profiling with proportional overlap allocation, timezone-safe parsing, and a reproducible R pipeline.</p>
+          <h4 class="pc-title">EV Charging Load Profiling & Grid ROI</h4>
+          <p class="pc-desc">Constructed timezone-safe R pipeline analyzing 7,591 charging sessions; identified peak-load patterns projecting 15–20% utility cost reductions.</p>
           <div class="pc-tech">
-            <span>R</span><span>Statistics</span><span>Time Series</span>
+            <span>R Pipeline</span><span>Applied Statistics</span><span>Time-Series</span><span>Utility ROI</span>
           </div>
         </div>
 
-        <div class="project-card reveal">
+        <!-- Energy Demand Forecasting -->
+        <div class="project-card reveal" data-category="technical">
           <div class="pc-header">
             <svg class="pc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
             <a href="https://github.com/annanshaikh04/Data_6150_Individual-Project" target="_blank" class="pc-link-icon" title="GitHub">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
-          <h4 class="pc-title">Energy Demand Forecasting</h4>
-          <p class="pc-desc">24-hour-ahead energy demand forecasting using ARIMA, SARIMA, and Exponential Smoothing with seasonal decomposition.</p>
+          <h4 class="pc-title">Energy Demand Forecasting Engine</h4>
+          <p class="pc-desc">24-hour ahead grid load forecasting combining SARIMA, ARIMA, and Holt-Winters Exponential Smoothing with seasonal decomposition.</p>
           <div class="pc-tech">
-            <span>ARIMA</span><span>SARIMA</span><span>statsmodels</span>
+            <span>ARIMA / SARIMA</span><span>statsmodels</span><span>Forecasting</span>
           </div>
         </div>
 
-        <div class="project-card reveal">
+        <!-- Student Analytics DB -->
+        <div class="project-card reveal" data-category="technical">
           <div class="pc-header">
             <svg class="pc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
             <a href="https://github.com/annanshaikh04/OULAD-Student-Analytics-DB" target="_blank" class="pc-link-icon" title="GitHub">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
-          <h4 class="pc-title">Student Analytics Database</h4>
-          <p class="pc-desc">Full database project — normalized schema, Python ETL, integrity audits, roles, views, and stored procedures on the OULAD dataset.</p>
+          <h4 class="pc-title">Enterprise Analytics Database & ETL</h4>
+          <p class="pc-desc">Full 3NF normalized MySQL database with automated Python ETL pipelines, stored procedures, role-based security, and data integrity audits.</p>
           <div class="pc-tech">
-            <span>MySQL</span><span>ETL</span><span>Normalization</span><span>ERD</span>
+            <span>MySQL 3NF</span><span>Python ETL</span><span>Stored Procedures</span><span>Data Governance</span>
+          </div>
+        </div>
+
+        <!-- Startup Success LLM -->
+        <div class="project-card reveal" data-category="technical solutions">
+          <div class="pc-header">
+            <svg class="pc-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <a href="https://github.com/annanshaikh04/startup-success-prediction-LLM" target="_blank" class="pc-link-icon" title="GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h4 class="pc-title">LLM Semantic Company Profiler</h4>
+          <p class="pc-desc">Extracting latent market signals and growth indicators from unstructured startup descriptions using modern NLP & vector embeddings.</p>
+          <div class="pc-tech">
+            <span>Sentence Transformers</span><span>Vector Search</span><span>NLP</span><span>FastAPI</span>
           </div>
         </div>
 
@@ -388,140 +596,271 @@
     </div>
   </section>
 
-  <!-- ========== EXPERIENCE ========== -->
-  <section id="experience">
+  <!-- ========== INTERACTIVE LAB (TWO DEMOS: ROI CALCULATOR + NEURAL PLAYGROUND) ========== -->
+  <section id="interactive-lab">
     <div class="container">
-      <div class="section-label reveal">Experience & Education</div>
-      <h2 class="section-heading reveal">Where I've been</h2>
+      <div class="section-label reveal">Hands-On Differentiator</div>
+      <h2 class="section-heading reveal">The Interactive Lab</h2>
+      <p class="section-desc reveal">Experience real interactivity: Test how I calculate enterprise solution ROI or watch an in-browser neural network train live.</p>
 
-      <div class="timeline">
-        <div class="tl-item reveal">
-          <div class="tl-marker">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="tl-content">
-            <span class="tl-date">2026 · 3 months</span>
-            <h3 class="tl-title">Research Intern — Speech Technology</h3>
-            <p class="tl-org">Research Internship</p>
-            <ul class="tl-details">
-              <li>Co-authored "SoftSpeech" paper — accepted at <strong>Interspeech 2026</strong></li>
-              <li>Applied deep learning to speech enhancement and processing challenges</li>
-              <li>Went from zero speech domain knowledge to published researcher in 3 months</li>
-            </ul>
-          </div>
-        </div>
+      <!-- Lab Tab Switcher -->
+      <div class="lab-switcher reveal">
+        <button class="lab-tab active" id="tabRoiBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          1. Solutions ROI & Pipeline Estimator
+        </button>
+        <button class="lab-tab" id="tabNNBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          2. Live Neural Network Classifier
+        </button>
+      </div>
 
-        <div class="tl-item reveal">
-          <div class="tl-marker">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 12 3 12 0v-5"/></svg>
+      <!-- Demo 1: Solutions ROI Calculator -->
+      <div class="lab-pane active reveal" id="roiPane">
+        <div class="roi-grid">
+          <div class="roi-controls">
+            <h3 class="roi-title">Scoping & ROI Simulator</h3>
+            <p class="roi-sub">Adjust client parameters below to simulate automated pipeline savings and infrastructure optimization based on my production benchmarks.</p>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Daily Transaction / Record Volume</span>
+                <strong id="volDisplay">10,000 tx/day</strong>
+              </div>
+              <input type="range" id="volSlider" min="1000" max="100000" step="1000" value="10000">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Manual Engineering & Review Hours / Week</span>
+                <strong id="hoursDisplay">25 hrs/wk</strong>
+              </div>
+              <input type="range" id="hoursSlider" min="5" max="80" step="1" value="25">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Average Fully-Loaded Hourly Rate ($)</span>
+                <strong id="rateDisplay">$85 / hr</strong>
+              </div>
+              <input type="range" id="rateSlider" min="40" max="200" step="5" value="85">
+            </div>
           </div>
-          <div class="tl-content">
-            <span class="tl-date">2024 — 2026</span>
-            <h3 class="tl-title">MS Data Science — 4.0 GPA</h3>
-            <p class="tl-org">Wentworth Institute of Technology · Boston, MA</p>
-            <ul class="tl-details">
-              <li>Graduated with a <strong>perfect 4.0 GPA</strong></li>
-              <li>Capstone: Built VentureFlow AI — Investment Intelligence Platform</li>
-              <li>Coursework: Machine Learning, Deep Learning, Applied Statistics, Data Engineering</li>
-              <li>Research: GPT-2 backward attention architecture, Fake News Detection pipeline</li>
-            </ul>
+
+          <div class="roi-results-card">
+            <div class="roi-badge">Projected Business Impact</div>
+            <div class="roi-metric-big">
+              <span class="roi-number" id="annualSavings">$97,240</span>
+              <span class="roi-caption">Estimated Annual Cost Savings (88% efficiency benchmark)</span>
+            </div>
+            <div class="roi-breakdown">
+              <div class="roi-b-item">
+                <span class="roi-b-val" id="hoursSaved">1,144 hrs</span>
+                <span class="roi-b-label">Engineering Hours Saved/Yr</span>
+              </div>
+              <div class="roi-b-item">
+                <span class="roi-b-val" id="latencyReduction">-40% to -60%</span>
+                <span class="roi-b-label">API Latency Improvement</span>
+              </div>
+              <div class="roi-b-item">
+                <span class="roi-b-val" id="paybackPeriod">&lt; 2.5 Months</span>
+                <span class="roi-b-label">Est. POC Payback Period</span>
+              </div>
+            </div>
+            <div class="roi-footer-note">
+              💡 <em>"In technical sales, the best way to close enterprise clients is demonstrating concrete, measurable ROI before the contract is signed."</em>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Demo 2: Neural Network Playground -->
+      <div class="lab-pane reveal" id="nnPane">
+        <div class="playground-container">
+          <div class="playground-controls">
+            <div class="control-group">
+              <button class="pg-btn active" id="classABtn" data-class="A">
+                <span class="class-dot class-a"></span> Class A (Positive)
+              </button>
+              <button class="pg-btn" id="classBBtn" data-class="B">
+                <span class="class-dot class-b"></span> Class B (Negative)
+              </button>
+            </div>
+            <div class="control-group">
+              <button class="pg-btn action" id="trainBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Train Network
+              </button>
+              <button class="pg-btn" id="resetBtn">Clear Canvas</button>
+            </div>
+            <div class="pg-info">
+              <span id="epochDisplay">Epoch: 0</span>
+              <span id="lossDisplay">Loss: —</span>
+            </div>
+          </div>
+          <canvas id="playground-canvas" width="600" height="380"></canvas>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ========== NEURAL NETWORK PLAYGROUND ========== -->
-  <section id="playground">
+  <!-- ========== CAPABILITIES & SKILLS ========== -->
+  <section id="skills">
     <div class="container">
-      <div class="section-label reveal">Interactive</div>
-      <h2 class="section-heading reveal">Neural Network Playground</h2>
-      <p class="section-desc reveal">Click on the canvas to add data points. Blue = Class A, Orange = Class B. Hit "Train" to watch a tiny neural network learn the decision boundary in real-time.</p>
+      <div class="section-label reveal">Capabilities</div>
+      <h2 class="section-heading reveal">Technical & Solutions Stack</h2>
 
-      <div class="playground-container reveal">
-        <div class="playground-controls">
-          <div class="control-group">
-            <button class="pg-btn active" id="classABtn" data-class="A">
-              <span class="class-dot class-a"></span> Class A
-            </button>
-            <button class="pg-btn" id="classBBtn" data-class="B">
-              <span class="class-dot class-b"></span> Class B
-            </button>
+      <div class="skills-grid reveal">
+
+        <!-- 1. Pre-Sales & Technical Solutions -->
+        <div class="skill-category-card">
+          <div class="s-cat-header">
+            <span class="s-cat-icon">💼</span>
+            <h3 class="s-cat-title">Pre-Sales & Solutions</h3>
           </div>
-          <div class="control-group">
-            <button class="pg-btn action" id="trainBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              Train
-            </button>
-            <button class="pg-btn" id="resetBtn">Reset</button>
-          </div>
-          <div class="pg-info">
-            <span id="epochDisplay">Epoch: 0</span>
-            <span id="lossDisplay">Loss: —</span>
+          <p class="s-cat-desc">Translating client requirements into architectures and business wins.</p>
+          <div class="skill-pills">
+            <span class="pill pill-highlight">Pre-Sales Engineering</span>
+            <span class="pill pill-highlight">Technical Discovery</span>
+            <span class="pill pill-highlight">POC Development</span>
+            <span class="pill">Solution Consulting</span>
+            <span class="pill">Executive Demos</span>
+            <span class="pill">Requirements Scoping</span>
+            <span class="pill">Stakeholder Management</span>
+            <span class="pill">ROI Modeling</span>
           </div>
         </div>
-        <canvas id="playground-canvas" width="600" height="400"></canvas>
+
+        <!-- 2. Data Platforms & SaaS Tools -->
+        <div class="skill-category-card">
+          <div class="s-cat-header">
+            <span class="s-cat-icon">☁️</span>
+            <h3 class="s-cat-title">Platforms & Data Warehousing</h3>
+          </div>
+          <p class="s-cat-desc">Modern enterprise data stack and cloud infrastructure.</p>
+          <div class="skill-pills">
+            <span class="pill pill-highlight">Snowflake</span>
+            <span class="pill pill-highlight">Databricks</span>
+            <span class="pill pill-highlight">AWS (S3, EC2, Redshift)</span>
+            <span class="pill">PostgreSQL / MySQL</span>
+            <span class="pill">MongoDB</span>
+            <span class="pill">Redis Caching</span>
+            <span class="pill">Star Schema Design</span>
+            <span class="pill">Docker & CI/CD</span>
+          </div>
+        </div>
+
+        <!-- 3. Machine Learning & AI -->
+        <div class="skill-category-card">
+          <div class="s-cat-header">
+            <span class="s-cat-icon">🧠</span>
+            <h3 class="s-cat-title">Machine Learning & LLMs</h3>
+          </div>
+          <p class="s-cat-desc">Production-grade predictive modeling & transformer architectures.</p>
+          <div class="skill-pills">
+            <span class="pill pill-highlight">PyTorch</span>
+            <span class="pill pill-highlight">Hugging Face</span>
+            <span class="pill pill-highlight">Sentence Transformers</span>
+            <span class="pill">Scikit-Learn</span>
+            <span class="pill">XGBoost</span>
+            <span class="pill">SHAP / LIME (Explainability)</span>
+            <span class="pill">LoRA / Fine-Tuning</span>
+            <span class="pill">UMAP & HDBSCAN</span>
+          </div>
+        </div>
+
+        <!-- 4. Presentation, Demo & Programming -->
+        <div class="skill-category-card">
+          <div class="s-cat-header">
+            <span class="s-cat-icon">⚡</span>
+            <h3 class="s-cat-title">Programming & BI Demos</h3>
+          </div>
+          <p class="s-cat-desc">Rapid prototyping and interactive client-facing visualizations.</p>
+          <div class="skill-pills">
+            <span class="pill pill-highlight">Python</span>
+            <span class="pill pill-highlight">SQL</span>
+            <span class="pill pill-highlight">Streamlit</span>
+            <span class="pill pill-highlight">Tableau (Public & Desktop)</span>
+            <span class="pill">Power BI</span>
+            <span class="pill">R</span>
+            <span class="pill">Java</span>
+            <span class="pill">JavaScript / HTML / CSS</span>
+            <span class="pill">Plotly & Seaborn</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ========== WRITING ========== -->
+  <!-- ========== WRITING & THOUGHT LEADERSHIP ========== -->
   <section id="writing">
     <div class="container">
-      <div class="section-label reveal">Writing</div>
-      <h2 class="section-heading reveal">Things I've been thinking about</h2>
+      <div class="section-label reveal">Thought Leadership</div>
+      <h2 class="section-heading reveal">Articles & Architecture Notes</h2>
 
       <div class="writing-grid">
         <article class="writing-card reveal">
           <span class="writing-date">Aug 2026</span>
           <h3 class="writing-title">Why backward attention beats LoRA for targeted reasoning tasks</h3>
-          <p class="writing-excerpt">When I started my GPT-2 research project, the obvious choice was LoRA. Everyone uses it. But I had a hunch that architectural additions could outperform parameter-efficient fine-tuning for specific mathematical reasoning — here's what I found.</p>
+          <p class="writing-excerpt">When I started my GPT-2 research, everyone recommended standard LoRA. But architectural augmentation can outperform parameter-efficient fine-tuning for domain math while maintaining minimal GPU footprints.</p>
           <span class="writing-read">Read more →</span>
         </article>
 
         <article class="writing-card reveal">
           <span class="writing-date">Jun 2026</span>
-          <h3 class="writing-title">What Interspeech taught me about research</h3>
-          <p class="writing-excerpt">Going from "I've never written a paper" to "accepted at a top conference" in 3 months. The things nobody tells you about academic research sprints, reviewer feedback, and the importance of ablation studies.</p>
+          <h3 class="writing-title">What Interspeech taught me about technical communication</h3>
+          <p class="writing-excerpt">Going from zero speech domain knowledge to a published paper at one of the world's top conferences in 3 months. How rigorous ablation studies and clear storytelling make or break complex technical reviews.</p>
           <span class="writing-read">Read more →</span>
         </article>
 
         <article class="writing-card reveal">
           <span class="writing-date">Apr 2026</span>
-          <h3 class="writing-title">Designing a star schema for 47K startups</h3>
-          <p class="writing-excerpt">Most data scientists treat databases as someone else's problem. But when you're building a prediction platform from scratch, schema design is the foundation. Here's how I approached the VentureFlow AI data warehouse.</p>
+          <h3 class="writing-title">Designing star schemas that scale for predictive AI</h3>
+          <p class="writing-excerpt">Most data scientists treat database schemas as someone else's problem. Here is how I architected the 47K startup data warehouse for VentureFlow AI to ensure sub-100ms inference and zero drift.</p>
           <span class="writing-read">Read more →</span>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ========== CONTACT ========== -->
+  <!-- ========== CONTACT & CONVERSATION ========== -->
   <section id="contact">
     <div class="container">
       <div class="contact-section reveal">
-        <h2 class="contact-heading">Let's talk.</h2>
-        <p class="contact-subtext">I'm looking for Data Scientist, ML Engineer, or Data Engineer roles.<br>If you're building something interesting, I want to hear about it.</p>
+        <div class="contact-badge">Let's Connect</div>
+        <h2 class="contact-heading">Ready to drive measurable impact.</h2>
+        <p class="contact-subtext">
+          I am actively exploring <strong>Solutions Engineer</strong>, <strong>Pre-Sales Consultant</strong>, <strong>AI/ML Specialist</strong>, <strong>Solutions Architect</strong>, and <strong>Data Scientist</strong> roles.<br>
+          Let's discuss how my technical execution and client-facing skills can accelerate your team's goals.
+        </p>
+
         <div class="contact-links-row">
-          <a href="mailto:annan.shaikh0404@gmail.com" class="contact-chip">
+          <button class="contact-chip copy-chip" data-copy="annan.shaikh0404@gmail.com" title="Click to copy email">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             annan.shaikh0404@gmail.com
+            <span class="chip-action">Copy</span>
+          </button>
+
+          <a href="https://www.linkedin.com/in/annanahmed-shaikh" target="_blank" class="contact-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn Profile
           </a>
+
           <a href="https://github.com/annanshaikh04" target="_blank" class="contact-chip">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/annanahmed-shaikh" target="_blank" class="contact-chip">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
+
           <a href="https://public.tableau.com/app/profile/annanahmed.shaikh3774/vizzes" target="_blank" class="contact-chip">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-            Tableau
+            Tableau Portfolio
           </a>
-          <a href="Shaikh_Annanahmed_Resume.pdf" target="_blank" class="contact-chip">
+
+          <a href="Shaikh_Annanahmed_Resume.pdf" target="_blank" class="contact-chip highlight-chip">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Resume
+            Download Resume (PDF)
           </a>
         </div>
       </div>
@@ -532,8 +871,8 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <p class="footer-text">Built with HTML, CSS, and JS. No frameworks, no templates.</p>
-        <p class="footer-text">&copy; 2026 Annanahmed Shaikh</p>
+        <p class="footer-text">Designed & built with vanilla HTML, CSS & JavaScript. High performance, zero bloated frameworks.</p>
+        <p class="footer-text">&copy; 2026 Annanahmed Shaikh · Boston, MA</p>
       </div>
     </div>
   </footer>
