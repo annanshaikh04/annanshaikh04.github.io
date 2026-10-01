@@ -1,559 +1,421 @@
-/* ============================================
-   ANNANAHMED SHAIKH — Portfolio Logic
-   Custom Cursor · Hero Canvas · Typing · Reveal · Playground
-   ============================================ */
+/* ==========================================================================
+   ANNANAHMED SHAIKH — PORTFOLIO RUNTIME ENGINE
+   Features:
+   1. Interactive VentureFlow AI Model Simulator
+   2. 2D Neural Network Classifier (Live Backprop & Decision Boundary)
+   3. Mobile Navigation Controller
+   4. Smooth Anchor Tracking
+   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initCustomCursor();
-  initHeroCanvas();
-  initTypingEffect();
-  initNavbar();
-  initScrollReveal();
+  initMobileNav();
+  initVentureFlowSimulator();
+  initNeuralLab();
   initSmoothScroll();
-  initPlayground();
 });
 
-/* ==========================================
-   1. CUSTOM CURSOR
-   ========================================== */
-function initCustomCursor() {
-  const dot  = document.getElementById('cursorDot');
-  const ring = document.getElementById('cursorRing');
-  if (!dot || !ring) return;
+/* --------------------------------------------------------------------------
+   1. MOBILE NAVIGATION CONTROLLER
+   -------------------------------------------------------------------------- */
+function initMobileNav() {
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+  if (!toggle || !menu) return;
 
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
-  let rafId;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top  = mouseY + 'px';
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    const isOpen = menu.classList.contains('open');
+    toggle.setAttribute('aria-expanded', isOpen);
   });
 
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    ring.style.left = ringX + 'px';
-    ring.style.top  = ringY + 'px';
-    rafId = requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  // Hover effect
-  document.querySelectorAll('a, button, .proj-card, .jstep-card, .exp-card').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+  menu.querySelectorAll('.nav-item').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
   });
 }
 
-/* ==========================================
-   2. HERO CANVAS — Constellation
-   ========================================== */
-function initHeroCanvas() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
+/* --------------------------------------------------------------------------
+   2. VENTUREFLOW AI LIVE MODEL INFERENCE SIMULATOR
+   -------------------------------------------------------------------------- */
+function initVentureFlowSimulator() {
+  const sectorSelect = document.getElementById('sectorSelect');
+  const fundingRound = document.getElementById('fundingRound');
+  const simProb = document.getElementById('simProb');
+  const simBar = document.getElementById('simBar');
+  const simShap = document.getElementById('simShap');
+
+  if (!sectorSelect || !fundingRound || !simProb || !simBar || !simShap) return;
+
+  const profiles = {
+    'enterprise-seed': {
+      prob: '64.2%',
+      shap: [
+        { text: '+0.18 MPNet Semantic Fit', pos: true },
+        { text: '+0.11 Star-Schema Syndicate Index', pos: true },
+        { text: '-0.14 Early Stage Burn Volatility', pos: false }
+      ]
+    },
+    'enterprise-seriesA': {
+      prob: '78.4%',
+      shap: [
+        { text: '+0.22 MPNet Text Vector', pos: true },
+        { text: '+0.14 Investor Syndicate Score', pos: true },
+        { text: '-0.05 Burn Multiple', pos: false }
+      ]
+    },
+    'enterprise-seriesB': {
+      prob: '89.1%',
+      shap: [
+        { text: '+0.29 Revenue Velocity Vector', pos: true },
+        { text: '+0.19 Dual-Embedding Consensus', pos: true },
+        { text: '+0.08 Tier-1 Lead Participation', pos: true }
+      ]
+    },
+    'fintech-seed': {
+      prob: '58.7%',
+      shap: [
+        { text: '+0.15 Regulatory Moat Vector', pos: true },
+        { text: '-0.16 High Early CAC Penalty', pos: false },
+        { text: '+0.09 Founder Repeat Track', pos: true }
+      ]
+    },
+    'fintech-seriesA': {
+      prob: '73.5%',
+      shap: [
+        { text: '+0.21 Transaction Volume Yield', pos: true },
+        { text: '+0.16 MiniLM Syntactic Relevance', pos: true },
+        { text: '-0.08 Compliance Overhead', pos: false }
+      ]
+    },
+    'fintech-seriesB': {
+      prob: '86.4%',
+      shap: [
+        { text: '+0.27 Star-Schema Unit Economics', pos: true },
+        { text: '+0.18 Dual Embedding Centroid', pos: true },
+        { text: '+0.12 Multi-Market Expansion Score', pos: true }
+      ]
+    },
+    'health-seed': {
+      prob: '61.3%',
+      shap: [
+        { text: '+0.24 Clinical Patent Embedding', pos: true },
+        { text: '-0.19 Extended Trial Timeline', pos: false },
+        { text: '+0.10 Academic IP Transfer', pos: true }
+      ]
+    },
+    'health-seriesA': {
+      prob: '76.8%',
+      shap: [
+        { text: '+0.25 Trial Milestone Clearance', pos: true },
+        { text: '+0.15 MPNet Biosignal Patent Vector', pos: true },
+        { text: '-0.09 Regulatory Review Delay', pos: false }
+      ]
+    },
+    'health-seriesB': {
+      prob: '91.2%',
+      shap: [
+        { text: '+0.31 FDA Clearance Pathway', pos: true },
+        { text: '+0.21 Dual Embedding Domain Weight', pos: true },
+        { text: '+0.14 Health Systems Pilot Retention', pos: true }
+      ]
+    },
+    'climate-seed': {
+      prob: '56.9%',
+      shap: [
+        { text: '+0.19 Clean Tech Grant Correlation', pos: true },
+        { text: '-0.20 Hardware CapEx Hurdle', pos: false },
+        { text: '+0.08 Municipal Pilot Agreement', pos: true }
+      ]
+    },
+    'climate-seriesA': {
+      prob: '72.1%',
+      shap: [
+        { text: '+0.22 Grid Interconnect Contract', pos: true },
+        { text: '+0.17 MiniLM Energy Density Vector', pos: true },
+        { text: '-0.11 Commodity Supply Volatility', pos: false }
+      ]
+    },
+    'climate-seriesB': {
+      prob: '84.6%',
+      shap: [
+        { text: '+0.28 Commercial Fleet Scale', pos: true },
+        { text: '+0.19 Carbon Credit Yield Vector', pos: true },
+        { text: '+0.11 Utility PPA Commitments', pos: true }
+      ]
+    }
+  };
+
+  function updateSimulation() {
+    const key = `${sectorSelect.value}-${fundingRound.value}`;
+    const data = profiles[key] || profiles['enterprise-seriesA'];
+
+    simProb.textContent = data.prob;
+    simBar.style.width = data.prob;
+
+    simShap.innerHTML = data.shap.map(item => `
+      <span class="shap-tag ${item.pos ? 'pos' : 'neg'}">${item.text}</span>
+    `).join('');
+  }
+
+  sectorSelect.addEventListener('change', updateSimulation);
+  fundingRound.addEventListener('change', updateSimulation);
+}
+
+/* --------------------------------------------------------------------------
+   3. 2D NEURAL DECISION BOUNDARY LAB (LIVE BACKPROPAGATION)
+   -------------------------------------------------------------------------- */
+function initNeuralLab() {
+  const canvas = document.getElementById('neuralCanvas');
+  const btnClassA = document.getElementById('btnClassA');
+  const btnClassB = document.getElementById('btnClassB');
+  const btnTrain = document.getElementById('btnTrain');
+  const btnReset = document.getElementById('btnReset');
+  const epochCount = document.getElementById('epochCount');
+  const lossCount = document.getElementById('lossCount');
+  const hint = document.getElementById('canvasHint');
+
+  if (!canvas || !btnClassA || !btnClassB || !btnTrain || !btnReset) return;
+
   const ctx = canvas.getContext('2d');
-  let particles = [];
-  let mouse = { x: -9999, y: -9999, radius: 130 };
+  let currentClass = 0; // 0 = Class A, 1 = Class B
+  let points = [];
+  let isTraining = false;
+  let animFrameId = null;
+  let epoch = 0;
 
-  function resize() {
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-    createParticles();
+  // Initialize Default Clustered Points (Pre-populated so user sees immediate results)
+  function initDefaultPoints() {
+    points = [
+      // Class A Cluster (Azure - Left/Top)
+      { x: 0.28, y: 0.32, label: 0 },
+      { x: 0.32, y: 0.40, label: 0 },
+      { x: 0.22, y: 0.48, label: 0 },
+      { x: 0.38, y: 0.28, label: 0 },
+      { x: 0.35, y: 0.52, label: 0 },
+      // Class B Cluster (Amber - Right/Bottom)
+      { x: 0.68, y: 0.65, label: 1 },
+      { x: 0.74, y: 0.58, label: 1 },
+      { x: 0.62, y: 0.72, label: 1 },
+      { x: 0.78, y: 0.68, label: 1 },
+      { x: 0.70, y: 0.78, label: 1 }
+    ];
   }
-
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-  window.addEventListener('mouseleave', () => {
-    mouse.x = -9999;
-    mouse.y = -9999;
-  });
-
-  class Star {
-    constructor() { this.reset(); }
-    reset() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 1.4 + 0.3;
-      this.vx = (Math.random() - 0.5) * 0.25;
-      this.vy = (Math.random() - 0.5) * 0.25;
-      this.opacity = Math.random() * 0.5 + 0.1;
-    }
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-
-      // Mouse repulsion
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < mouse.radius) {
-        const force = (mouse.radius - dist) / mouse.radius;
-        this.x -= dx * force * 0.015;
-        this.y -= dy * force * 0.015;
-      }
-
-      if (this.x < 0 || this.x > canvas.width)  this.vx *= -1;
-      if (this.y < 0 || this.y > canvas.height)  this.vy *= -1;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(251, 191, 36, ${this.opacity})`;
-      ctx.fill();
-    }
-  }
-
-  function createParticles() {
-    const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 80);
-    particles = [];
-    for (let i = 0; i < count; i++) particles.push(new Star());
-  }
-
-  function drawLines() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const d  = Math.sqrt(dx * dx + dy * dy);
-        if (d < 110) {
-          const alpha = ((110 - d) / 110) * 0.08;
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(251, 191, 36, ${alpha})`;
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  function loop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    drawLines();
-    requestAnimationFrame(loop);
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-  loop();
-}
-
-/* ==========================================
-   3. TYPING EFFECT
-   ========================================== */
-const PHRASES = [
-  'Machine Learning & Data Analytics Engineer',
-  'Published Researcher @ Interspeech 2026',
-  'State-Space Models (Mamba / S5) · PyTorch',
-  'MS Data Science — 4.0 GPA · Wentworth',
-  'Building AI Systems That Actually Work',
-];
-
-let phraseIdx  = 0;
-let charIdx    = 0;
-let deleting   = false;
-let speed      = 55;
-
-function initTypingEffect() { typeLoop(); }
-
-function typeLoop() {
-  const el = document.getElementById('typed-text');
-  if (!el) return;
-  const phrase = PHRASES[phraseIdx % PHRASES.length];
-
-  if (deleting) {
-    el.textContent = phrase.substring(0, charIdx - 1);
-    charIdx--;
-    speed = 22;
-  } else {
-    el.textContent = phrase.substring(0, charIdx + 1);
-    charIdx++;
-    speed = 55;
-  }
-
-  if (!deleting && charIdx === phrase.length) { speed = 2400; deleting = true; }
-  else if (deleting && charIdx === 0) {
-    deleting = false;
-    phraseIdx = (phraseIdx + 1) % PHRASES.length;
-    speed = 380;
-  }
-  setTimeout(typeLoop, speed);
-}
-
-/* ==========================================
-   4. NAVBAR
-   ========================================== */
-function initNavbar() {
-  const navbar   = document.getElementById('navbar');
-  const hamburger = document.getElementById('navHamburger');
-  const navLinks  = document.getElementById('navLinks');
-
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.pageYOffset > 60);
-  });
-
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      hamburger.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.classList.remove('open');
-      });
-    });
-  }
-}
-
-/* ==========================================
-   5. SCROLL REVEAL
-   ========================================== */
-function initScrollReveal() {
-  const selectors = '.reveal-up, .reveal-left, .reveal-right, .exp-card';
-  const elements  = document.querySelectorAll(selectors);
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.07,
-    rootMargin: '0px 0px -30px 0px'
-  });
-
-  elements.forEach(el => observer.observe(el));
-}
-
-/* ==========================================
-   6. SMOOTH SCROLL
-   ========================================== */
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-}
-
-/* ==========================================
-   7. NEURAL NETWORK PLAYGROUND
-   ========================================== */
-function initPlayground() {
-  const canvas = document.getElementById('playground-canvas');
-  if (!canvas) return;
-
-  const ctx          = canvas.getContext('2d');
-  const epochDisplay = document.getElementById('epochDisplay');
-  const lossDisplay  = document.getElementById('lossDisplay');
-  const trainBtn     = document.getElementById('trainBtn');
-  const resetBtn     = document.getElementById('resetBtn');
-  const classABtn    = document.getElementById('classABtn');
-  const classBBtn    = document.getElementById('classBBtn');
-
-  let selectedClass = 'A';
-  let dataPoints    = [];
-  let network       = null;
-  let training      = false;
-  let epoch         = 0;
-  let animId        = null;
+  initDefaultPoints();
 
   function resizeCanvas() {
-    const rect  = canvas.parentElement.getBoundingClientRect();
-    canvas.width  = rect.width;
-    canvas.height = 420;
-    drawScene();
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * window.devicePixelRatio || 900;
+    canvas.height = rect.height * window.devicePixelRatio || 420;
+    renderScene();
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  classABtn.addEventListener('click', () => {
-    selectedClass = 'A';
-    classABtn.classList.add('active');
-    classBBtn.classList.remove('active');
-  });
-  classBBtn.addEventListener('click', () => {
-    selectedClass = 'B';
-    classBBtn.classList.add('active');
-    classABtn.classList.remove('active');
-  });
-
-  canvas.addEventListener('click', (e) => {
-    if (training) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / canvas.width;
-    const y = (e.clientY - rect.top)  / canvas.height;
-    dataPoints.push({ x, y, label: selectedClass === 'A' ? 0 : 1 });
-    drawScene();
-  });
-
-  trainBtn.addEventListener('click', () => {
-    if (dataPoints.length < 2) return;
-    if (training) {
-      training = false;
-      setTrainBtnState(false);
-      if (animId) cancelAnimationFrame(animId);
-      return;
-    }
-    const hasA = dataPoints.some(p => p.label === 0);
-    const hasB = dataPoints.some(p => p.label === 1);
-    if (!hasA || !hasB) return;
-
-    training = true;
-    epoch    = 0;
-    network  = createNetwork();
-    setTrainBtnState(true);
-    trainLoop();
-  });
-
-  resetBtn.addEventListener('click', () => {
-    training    = false;
-    dataPoints  = [];
-    network     = null;
-    epoch       = 0;
-    epochDisplay.textContent = 'Epoch: 0';
-    lossDisplay.textContent  = 'Loss: —';
-    setTrainBtnState(false);
-    if (animId) cancelAnimationFrame(animId);
-    drawScene();
-  });
-
-  function setTrainBtnState(isTraining) {
-    if (isTraining) {
-      trainBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause`;
-    } else {
-      trainBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Train Network`;
-    }
-  }
-
-  // --- Network ---
-  function createNetwork() {
-    const r = (fi, fo) => (Math.random() * 2 - 1) * Math.sqrt(6 / (fi + fo));
-    const h1 = 8, h2 = 8;
+  // Neural Network Architecture: 2 Inputs -> 6 Hidden ReLUs -> 1 Sigmoid Output
+  function initWeights() {
+    const rand = () => (Math.random() - 0.5) * 1.5;
     return {
-      w1: Array.from({ length: h1 }, () => [r(2, h1), r(2, h1)]),
-      b1: new Array(h1).fill(0),
-      w2: Array.from({ length: h2 }, () => Array.from({ length: h1 }, () => r(h1, h2))),
-      b2: new Array(h2).fill(0),
-      w3: Array.from({ length: h2 }, () => r(h2, 1)),
-      b3: 0,
+      w1: Array.from({ length: 6 }, () => [rand(), rand()]),
+      b1: new Array(6).fill(0),
+      w2: Array.from({ length: 6 }, () => rand()),
+      b2: 0
     };
   }
+  let net = initWeights();
 
-  const sigmoid  = x => 1 / (1 + Math.exp(-Math.max(-15, Math.min(15, x))));
-  const relu     = x => Math.max(0, x);
-  const reluD    = x => x > 0 ? 1 : 0;
+  const sigmoid = z => 1 / (1 + Math.exp(-Math.max(-12, Math.min(12, z))));
+  const relu = z => Math.max(0, z);
 
-  function forward(net, x, y) {
-    const h1 = net.w1.map((w, i) => relu(w[0] * x + w[1] * y + net.b1[i]));
-    const h2 = net.w2.map((w, i) => {
-      let s = net.b2[i];
-      for (let j = 0; j < h1.length; j++) s += w[j] * h1[j];
-      return relu(s);
-    });
-    let out = net.b3;
-    for (let i = 0; i < h2.length; i++) out += net.w3[i] * h2[i];
-    return { h1, h2, out: sigmoid(out) };
+  function forward(x, y) {
+    const h = net.w1.map((w, i) => relu(w[0] * x + w[1] * y + net.b1[i]));
+    let z = net.b2;
+    for (let i = 0; i < 6; i++) z += net.w2[i] * h[i];
+    return { h, out: sigmoid(z) };
   }
 
-  function trainStep(net, lr) {
+  function trainEpoch(lr = 0.25) {
+    if (points.length === 0) return 0;
     let totalLoss = 0;
-    const idx = dataPoints.map((_, i) => i);
-    for (let i = idx.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [idx[i], idx[j]] = [idx[j], idx[i]];
-    }
-    for (const id of idx) {
-      const p = dataPoints[id];
-      const { h1, h2, out } = forward(net, p.x, p.y);
-      const t = p.label;
-      const c = Math.max(1e-7, Math.min(1 - 1e-7, out));
-      totalLoss += -(t * Math.log(c) + (1 - t) * Math.log(1 - c));
 
-      const dOut = out - t;
-      const dw3  = h2.map(h => dOut * h);
-      const db3  = dOut;
-      const dh2  = net.w3.map(w => dOut * w);
+    for (let p of points) {
+      const { h, out } = forward(p.x, p.y);
+      const target = p.label;
+      const eps = 1e-7;
+      const clipped = Math.max(eps, Math.min(1 - eps, out));
+      totalLoss += -(target * Math.log(clipped) + (1 - target) * Math.log(1 - clipped));
 
-      const dw2 = net.w2.map((w, i) => {
-        const pre = net.b2[i] + w.reduce((s, wj, j) => s + wj * h1[j], 0);
-        const dr  = reluD(pre) * dh2[i];
-        return h1.map(h => dr * h);
-      });
-      const db2 = net.w2.map((w, i) => {
-        const pre = net.b2[i] + w.reduce((s, wj, j) => s + wj * h1[j], 0);
-        return reluD(pre) * dh2[i];
-      });
-
-      const dh1 = h1.map((_, j) => {
-        let g = 0;
-        for (let i = 0; i < net.w2.length; i++) {
-          const pre = net.b2[i] + net.w2[i].reduce((s, wk, k) => s + wk * h1[k], 0);
-          g += reluD(pre) * dh2[i] * net.w2[i][j];
-        }
-        return g;
-      });
-
-      const dw1 = net.w1.map((w, i) => {
-        const pre = w[0] * p.x + w[1] * p.y + net.b1[i];
-        const dr  = reluD(pre) * dh1[i];
-        return [dr * p.x, dr * p.y];
-      });
-      const db1 = net.w1.map((w, i) => {
-        const pre = w[0] * p.x + w[1] * p.y + net.b1[i];
-        return reluD(pre) * dh1[i];
-      });
-
-      for (let i = 0; i < net.w3.length; i++) net.w3[i] -= lr * dw3[i];
-      net.b3 -= lr * db3;
-      for (let i = 0; i < net.w2.length; i++) {
-        for (let j = 0; j < net.w2[i].length; j++) net.w2[i][j] -= lr * dw2[i][j];
-        net.b2[i] -= lr * db2[i];
+      const dOut = out - target;
+      // Output layer gradients
+      for (let i = 0; i < 6; i++) {
+        net.w2[i] -= lr * dOut * h[i];
       }
-      for (let i = 0; i < net.w1.length; i++) {
-        net.w1[i][0] -= lr * dw1[i][0];
-        net.w1[i][1] -= lr * dw1[i][1];
-        net.b1[i]    -= lr * db1[i];
+      net.b2 -= lr * dOut;
+
+      // Hidden layer gradients
+      for (let i = 0; i < 6; i++) {
+        const dH = dOut * net.w2[i] * (h[i] > 0 ? 1 : 0);
+        net.w1[i][0] -= lr * dH * p.x;
+        net.w1[i][1] -= lr * dH * p.y;
+        net.b1[i] -= lr * dH;
       }
     }
-    return totalLoss / dataPoints.length;
+    return totalLoss / points.length;
   }
 
-  function trainLoop() {
-    if (!training) return;
-    let loss = 0;
-    for (let i = 0; i < 12; i++) { loss = trainStep(network, 0.5); epoch++; }
-    epochDisplay.textContent = `Epoch: ${epoch}`;
-    lossDisplay.textContent  = `Loss: ${loss.toFixed(4)}`;
-    drawScene();
-    animId = requestAnimationFrame(trainLoop);
-  }
-
-  function drawScene() {
+  function renderScene() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (network) {
-      const res = 4;
-      const img = ctx.createImageData(canvas.width, canvas.height);
-      for (let py = 0; py < canvas.height; py += res) {
-        for (let px = 0; px < canvas.width; px += res) {
-          const { out } = forward(network, px / canvas.width, py / canvas.height);
-          const r = Math.round(96  + (251 - 96)  * out);
-          const g = Math.round(165 + (146 - 165) * out);
-          const b = Math.round(250 + (22  - 250) * out);
-          for (let dy = 0; dy < res && py + dy < canvas.height; dy++) {
-            for (let dx = 0; dx < res && px + dx < canvas.width; dx++) {
-              const i = ((py + dy) * canvas.width + (px + dx)) * 4;
-              img.data[i]     = r;
-              img.data[i + 1] = g;
-              img.data[i + 2] = b;
-              img.data[i + 3] = 45;
-            }
-          }
-        }
+    // 1. Draw Decision Surface Heatmap
+    const step = 8;
+    for (let py = 0; py < canvas.height; py += step) {
+      for (let px = 0; px < canvas.width; px += step) {
+        const normX = px / canvas.width;
+        const normY = py / canvas.height;
+        const { out } = forward(normX, normY);
+
+        // Blend between Azure (#38bdf8) and Amber (#f59e0b)
+        // Azure: r=56, g=189, b=248
+        // Amber: r=245, g=158, b=11
+        const r = Math.round(56 + (245 - 56) * out);
+        const g = Math.round(189 + (158 - 189) * out);
+        const b = Math.round(248 + (11 - 248) * out);
+        const alpha = Math.abs(out - 0.5) * 0.28;
+
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        ctx.fillRect(px, py, step, step);
       }
-      ctx.putImageData(img, 0, 0);
-      drawContour(0.5);
     }
 
-    // Grid
-    ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+    // 2. Draw Subtle Coordinate Grid
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
     ctx.lineWidth = 1;
-    for (let i = 0; i < canvas.width; i += 44) {
-      ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
+    for (let x = 0; x < canvas.width; x += 40) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
     }
-    for (let i = 0; i < canvas.height; i += 44) {
-      ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
+    for (let y = 0; y < canvas.height; y += 40) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
     }
 
-    // Points
-    dataPoints.forEach(p => {
-      const px = p.x * canvas.width;
-      const py = p.y * canvas.height;
-      const isA = p.label === 0;
+    // 3. Draw Training Coordinates
+    points.forEach(p => {
+      const cx = p.x * canvas.width;
+      const cy = p.y * canvas.height;
+      const isClassA = p.label === 0;
 
+      // Halo
       ctx.beginPath();
-      ctx.arc(px, py, 14, 0, Math.PI * 2);
-      ctx.fillStyle = isA ? 'rgba(96, 165, 250, 0.12)' : 'rgba(251, 146, 60, 0.12)';
+      ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+      ctx.fillStyle = isClassA ? 'rgba(56, 189, 248, 0.18)' : 'rgba(245, 158, 11, 0.18)';
       ctx.fill();
 
+      // Core point
       ctx.beginPath();
-      ctx.arc(px, py, 5.5, 0, Math.PI * 2);
-      ctx.fillStyle = isA ? '#60a5fa' : '#fb923c';
+      ctx.arc(cx, cy, 6, 0, Math.PI * 2);
+      ctx.fillStyle = isClassA ? '#38bdf8' : '#f59e0b';
       ctx.fill();
-      ctx.strokeStyle = 'rgba(255,255,255,0.8)';
+      ctx.strokeStyle = '#ffffff';
       ctx.lineWidth = 1.5;
       ctx.stroke();
     });
 
-    if (dataPoints.length === 0 && !network) {
-      ctx.fillStyle = 'rgba(255,255,255,0.14)';
-      ctx.font = '500 14px "Plus Jakarta Sans", sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('Click anywhere to add data points', canvas.width / 2, canvas.height / 2 - 10);
-      ctx.fillStyle = 'rgba(255,255,255,0.07)';
-      ctx.font = '400 12px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText('Select Class A or B above, then click', canvas.width / 2, canvas.height / 2 + 14);
+    if (points.length > 0 && hint) {
+      hint.style.opacity = '0';
+    } else if (hint) {
+      hint.style.opacity = '1';
     }
   }
 
-  function drawContour(threshold) {
-    const step = 6;
-    ctx.strokeStyle = 'rgba(251, 191, 36, 0.55)';
-    ctx.lineWidth = 1.5;
-    for (let py = 0; py < canvas.height - step; py += step) {
-      for (let px = 0; px < canvas.width - step; px += step) {
-        const v00 = forward(network, px / canvas.width, py / canvas.height).out;
-        const v10 = forward(network, (px + step) / canvas.width, py / canvas.height).out;
-        const v01 = forward(network, px / canvas.width, (py + step) / canvas.height).out;
-        const v11 = forward(network, (px + step) / canvas.width, (py + step) / canvas.height).out;
-        marchingSquare(px, py, step, v00, v10, v01, v11, threshold).forEach(([x1,y1,x2,y2]) => {
-          ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+  // Interactive Point Placement
+  canvas.addEventListener('click', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    points.push({ x, y, label: currentClass });
+    renderScene();
+  });
+
+  // Switch Active Class
+  btnClassA.addEventListener('click', () => {
+    currentClass = 0;
+    btnClassA.classList.add('active');
+    btnClassB.classList.remove('active');
+  });
+
+  btnClassB.addEventListener('click', () => {
+    currentClass = 1;
+    btnClassB.classList.add('active');
+    btnClassA.classList.remove('active');
+  });
+
+  // Training Loop
+  function runTrainingStep() {
+    if (!isTraining) return;
+    let loss = 0;
+    for (let i = 0; i < 8; i++) {
+      loss = trainEpoch(0.28);
+      epoch++;
+    }
+    epochCount.textContent = `Epoch: ${epoch}`;
+    lossCount.textContent = `Loss: ${loss.toFixed(4)}`;
+    renderScene();
+    animFrameId = requestAnimationFrame(runTrainingStep);
+  }
+
+  btnTrain.addEventListener('click', () => {
+    if (isTraining) {
+      isTraining = false;
+      btnTrain.innerHTML = `
+        <svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>Train Network</span>
+      `;
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+    } else {
+      isTraining = true;
+      btnTrain.innerHTML = `
+        <svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        <span>Pause Training</span>
+      `;
+      runTrainingStep();
+    }
+  });
+
+  btnReset.addEventListener('click', () => {
+    isTraining = false;
+    if (animFrameId) cancelAnimationFrame(animFrameId);
+    points = [];
+    net = initWeights();
+    epoch = 0;
+    epochCount.textContent = 'Epoch: 0';
+    lossCount.textContent = 'Loss: —';
+    btnTrain.innerHTML = `
+      <svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      <span>Train Network</span>
+    `;
+    renderScene();
+  });
+
+  // Initial draw
+  renderScene();
+}
+
+/* --------------------------------------------------------------------------
+   4. SMOOTH SCROLLING CONTROLLER
+   -------------------------------------------------------------------------- */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        targetEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }
-    }
-  }
-
-  function marchingSquare(x, y, s, v00, v10, v01, v11, t) {
-    const lines = [];
-    const code = (v00 >= t ? 8 : 0) | (v10 >= t ? 4 : 0) | (v11 >= t ? 2 : 0) | (v01 >= t ? 1 : 0);
-    const lerp = (a, b, va, vb) => a + (t - va) / (vb - va) * (b - a);
-    const top    = [lerp(x, x+s, v00, v10), y];
-    const bottom = [lerp(x, x+s, v01, v11), y+s];
-    const left   = [x, lerp(y, y+s, v00, v01)];
-    const right  = [x+s, lerp(y, y+s, v10, v11)];
-    switch (code) {
-      case 1: case 14: lines.push([left[0],left[1],bottom[0],bottom[1]]); break;
-      case 2: case 13: lines.push([bottom[0],bottom[1],right[0],right[1]]); break;
-      case 3: case 12: lines.push([left[0],left[1],right[0],right[1]]); break;
-      case 4: case 11: lines.push([top[0],top[1],right[0],right[1]]); break;
-      case 5:
-        lines.push([left[0],left[1],top[0],top[1]]);
-        lines.push([bottom[0],bottom[1],right[0],right[1]]);
-        break;
-      case 6: case 9:  lines.push([top[0],top[1],bottom[0],bottom[1]]); break;
-      case 7: case 8:  lines.push([left[0],left[1],top[0],top[1]]); break;
-      case 10:
-        lines.push([left[0],left[1],bottom[0],bottom[1]]);
-        lines.push([top[0],top[1],right[0],right[1]]);
-        break;
-    }
-    return lines;
-  }
-
-  drawScene();
+    });
+  });
 }
