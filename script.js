@@ -1,18 +1,25 @@
 /* ==========================================================================
-   ANNANAHMED SHAIKH — PORTFOLIO RUNTIME ENGINE
+   ANNANAHMED SHAIKH — PORTFOLIO RUNTIME ENGINE (FAIL-SAFE & HIGH PERFORMANCE)
    Features:
    1. Interactive VentureFlow AI Model Simulator
-   2. 2D Neural Network Classifier (Live Backprop & Decision Boundary)
+   2. 2D Neural Network Classifier (Live Backprop & Smooth Decision Boundary)
    3. Mobile Navigation Controller
    4. Smooth Anchor Tracking
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
-  initMobileNav();
-  initVentureFlowSimulator();
-  initNeuralLab();
-  initSmoothScroll();
-});
+// Guaranteed Initialization (runs even if DOMContentLoaded already fired)
+function initApp() {
+  try { initMobileNav(); } catch (e) { console.warn('Nav init:', e); }
+  try { initVentureFlowSimulator(); } catch (e) { console.warn('Simulator init:', e); }
+  try { initNeuralLab(); } catch (e) { console.warn('Neural lab init:', e); }
+  try { initSmoothScroll(); } catch (e) { console.warn('Scroll init:', e); }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 /* --------------------------------------------------------------------------
    1. MOBILE NAVIGATION CONTROLLER
@@ -25,7 +32,7 @@ function initMobileNav() {
   toggle.addEventListener('click', () => {
     menu.classList.toggle('open');
     const isOpen = menu.classList.contains('open');
-    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
   menu.querySelectorAll('.nav-item').forEach(link => {
@@ -161,10 +168,13 @@ function initVentureFlowSimulator() {
 
   sectorSelect.addEventListener('change', updateSimulation);
   fundingRound.addEventListener('change', updateSimulation);
+
+  // Run on initial load so values are populated immediately
+  updateSimulation();
 }
 
 /* --------------------------------------------------------------------------
-   3. 2D NEURAL DECISION BOUNDARY LAB (LIVE BACKPROPAGATION)
+   3. 2D NEURAL DECISION BOUNDARY LAB (SMOOTH & FAIL-SAFE)
    -------------------------------------------------------------------------- */
 function initNeuralLab() {
   const canvas = document.getElementById('neuralCanvas');
@@ -185,16 +195,15 @@ function initNeuralLab() {
   let animFrameId = null;
   let epoch = 0;
 
-  // Initialize Default Clustered Points (Pre-populated so user sees immediate results)
   function initDefaultPoints() {
     points = [
-      // Class A Cluster (Azure - Left/Top)
+      // Class A Cluster (Azure - Top/Left)
       { x: 0.28, y: 0.32, label: 0 },
       { x: 0.32, y: 0.40, label: 0 },
       { x: 0.22, y: 0.48, label: 0 },
       { x: 0.38, y: 0.28, label: 0 },
       { x: 0.35, y: 0.52, label: 0 },
-      // Class B Cluster (Amber - Right/Bottom)
+      // Class B Cluster (Amber - Bottom/Right)
       { x: 0.68, y: 0.65, label: 1 },
       { x: 0.74, y: 0.58, label: 1 },
       { x: 0.62, y: 0.72, label: 1 },
@@ -206,14 +215,15 @@ function initNeuralLab() {
 
   function resizeCanvas() {
     const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * window.devicePixelRatio || 900;
-    canvas.height = rect.height * window.devicePixelRatio || 420;
+    const w = Math.floor(rect.width || canvas.parentElement.clientWidth || 800);
+    const h = Math.floor(rect.height || 420);
+    canvas.width = Math.max(300, w);
+    canvas.height = Math.max(250, h);
     renderScene();
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Neural Network Architecture: 2 Inputs -> 6 Hidden ReLUs -> 1 Sigmoid Output
   function initWeights() {
     const rand = () => (Math.random() - 0.5) * 1.5;
     return {
@@ -225,7 +235,10 @@ function initNeuralLab() {
   }
   let net = initWeights();
 
-  const sigmoid = z => 1 / (1 + Math.exp(-Math.max(-12, Math.min(12, z))));
+  const sigmoid = z => {
+    if (isNaN(z)) return 0.5;
+    return 1 / (1 + Math.exp(-Math.max(-12, Math.min(12, z))));
+  };
   const relu = z => Math.max(0, z);
 
   function forward(x, y) {
@@ -235,7 +248,7 @@ function initNeuralLab() {
     return { h, out: sigmoid(z) };
   }
 
-  function trainEpoch(lr = 0.25) {
+  function trainEpoch(lr = 0.22) {
     if (points.length === 0) return 0;
     let totalLoss = 0;
 
@@ -247,13 +260,11 @@ function initNeuralLab() {
       totalLoss += -(target * Math.log(clipped) + (1 - target) * Math.log(1 - clipped));
 
       const dOut = out - target;
-      // Output layer gradients
       for (let i = 0; i < 6; i++) {
         net.w2[i] -= lr * dOut * h[i];
       }
       net.b2 -= lr * dOut;
 
-      // Hidden layer gradients
       for (let i = 0; i < 6; i++) {
         const dH = dOut * net.w2[i] * (h[i] > 0 ? 1 : 0);
         net.w1[i][0] -= lr * dH * p.x;
@@ -261,34 +272,37 @@ function initNeuralLab() {
         net.b1[i] -= lr * dH;
       }
     }
-    return totalLoss / points.length;
+    const avgLoss = totalLoss / points.length;
+    return isNaN(avgLoss) ? 0.35 : avgLoss;
   }
 
+  // Fast, optimal grid rendering (no freeze on Retina/4K screens)
   function renderScene() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // 1. Draw Decision Surface Heatmap
-    const step = 8;
-    for (let py = 0; py < canvas.height; py += step) {
-      for (let px = 0; px < canvas.width; px += step) {
-        const normX = px / canvas.width;
-        const normY = py / canvas.height;
+    // 1. Grid Heatmap
+    const cols = 45;
+    const rows = 22;
+    const cellW = canvas.width / cols;
+    const cellH = canvas.height / rows;
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const normX = (c + 0.5) / cols;
+        const normY = (r + 0.5) / rows;
         const { out } = forward(normX, normY);
 
-        // Blend between Azure (#38bdf8) and Amber (#f59e0b)
-        // Azure: r=56, g=189, b=248
-        // Amber: r=245, g=158, b=11
-        const r = Math.round(56 + (245 - 56) * out);
-        const g = Math.round(189 + (158 - 189) * out);
-        const b = Math.round(248 + (11 - 248) * out);
-        const alpha = Math.abs(out - 0.5) * 0.28;
+        const red = Math.round(56 + (245 - 56) * out);
+        const green = Math.round(189 + (158 - 189) * out);
+        const blue = Math.round(248 + (11 - 248) * out);
+        const alpha = Math.abs(out - 0.5) * 0.32;
 
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
-        ctx.fillRect(px, py, step, step);
+        ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+        ctx.fillRect(c * cellW, r * cellH, cellW + 1, cellH + 1);
       }
     }
 
-    // 2. Draw Subtle Coordinate Grid
+    // 2. Subtle Coordinate Grid Lines
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
     ctx.lineWidth = 1;
     for (let x = 0; x < canvas.width; x += 40) {
@@ -298,19 +312,17 @@ function initNeuralLab() {
       ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
     }
 
-    // 3. Draw Training Coordinates
+    // 3. Draw Training Points
     points.forEach(p => {
       const cx = p.x * canvas.width;
       const cy = p.y * canvas.height;
       const isClassA = p.label === 0;
 
-      // Halo
       ctx.beginPath();
       ctx.arc(cx, cy, 14, 0, Math.PI * 2);
-      ctx.fillStyle = isClassA ? 'rgba(56, 189, 248, 0.18)' : 'rgba(245, 158, 11, 0.18)';
+      ctx.fillStyle = isClassA ? 'rgba(56, 189, 248, 0.22)' : 'rgba(245, 158, 11, 0.22)';
       ctx.fill();
 
-      // Core point
       ctx.beginPath();
       ctx.arc(cx, cy, 6, 0, Math.PI * 2);
       ctx.fillStyle = isClassA ? '#38bdf8' : '#f59e0b';
@@ -330,8 +342,9 @@ function initNeuralLab() {
   // Interactive Point Placement
   canvas.addEventListener('click', (e) => {
     const rect = canvas.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
+    if (!rect.width || !rect.height) return;
+    const x = Math.max(0.02, Math.min(0.98, (e.clientX - rect.left) / rect.width));
+    const y = Math.max(0.02, Math.min(0.98, (e.clientY - rect.top) / rect.height));
     points.push({ x, y, label: currentClass });
     renderScene();
   });
@@ -353,8 +366,8 @@ function initNeuralLab() {
   function runTrainingStep() {
     if (!isTraining) return;
     let loss = 0;
-    for (let i = 0; i < 8; i++) {
-      loss = trainEpoch(0.28);
+    for (let i = 0; i < 6; i++) {
+      loss = trainEpoch(0.22);
       epoch++;
     }
     epochCount.textContent = `Epoch: ${epoch}`;
@@ -396,7 +409,6 @@ function initNeuralLab() {
     renderScene();
   });
 
-  // Initial draw
   renderScene();
 }
 
@@ -407,7 +419,7 @@ function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      if (!targetId || targetId === '#') return;
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
