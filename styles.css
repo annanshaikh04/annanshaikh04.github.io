@@ -1431,6 +1431,20 @@ button {
   gap: 28px;
 }
 
+.featured-skill-card {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(22, 26, 35, 0.95) 0%, rgba(26, 32, 44, 0.75) 100%);
+  border-color: var(--accent-gold-border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.sd-intro-note {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
 .skill-domain-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
